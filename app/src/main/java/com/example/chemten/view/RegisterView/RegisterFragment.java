@@ -2,13 +2,19 @@ package com.example.chemten.view.RegisterView;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.chemten.R;
+import com.example.chemten.view.LoginView.LoginFragmentDirections;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +22,8 @@ import com.example.chemten.R;
  * create an instance of this fragment.
  */
 public class RegisterFragment extends Fragment {
+
+    TextView register_text_login;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,7 +44,7 @@ public class RegisterFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment RegisterFragment.
+     * @return A new instance of fragment Register.
      */
     // TODO: Rename and change types and number of parameters
     public static RegisterFragment newInstance(String param1, String param2) {
@@ -62,5 +70,16 @@ public class RegisterFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_register, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        register_text_login = view.findViewById(R.id.register_text_login);
+        register_text_login.setOnClickListener(view1 -> {
+            NavDirections action = RegisterFragmentDirections.actionRegisterToLoginFragment2();
+            Navigation.findNavController(view1).navigate(action);
+        });
     }
 }

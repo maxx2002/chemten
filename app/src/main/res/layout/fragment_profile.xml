@@ -19,7 +19,7 @@
             android:layout_height="wrap_content" >
 
             <ImageView
-                android:id="@+id/imageView13"
+                android:id="@+id/profile_image_back"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="24dp"
@@ -244,7 +244,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
             <TextView
-                android:id="@+id/textView23"
+                android:id="@+id/profile_text_logout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"

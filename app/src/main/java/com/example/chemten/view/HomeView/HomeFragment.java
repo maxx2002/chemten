@@ -1,14 +1,21 @@
 package com.example.chemten.view.HomeView;
 
+import android.media.Image;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.chemten.R;
+import com.example.chemten.view.LoginView.LoginFragmentDirections;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +23,8 @@ import com.example.chemten.R;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
+
+    ImageView home_image_profile;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,5 +71,16 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        home_image_profile = view.findViewById(R.id.home_image_profile);
+        home_image_profile.setOnClickListener(view1 -> {
+            NavDirections action = HomeFragmentDirections.actionHomeFragmentToProfileFragment();
+            Navigation.findNavController(view1).navigate(action);
+        });
     }
 }

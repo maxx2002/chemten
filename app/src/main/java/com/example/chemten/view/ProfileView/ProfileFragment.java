@@ -2,13 +2,20 @@ package com.example.chemten.view.ProfileView;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.chemten.R;
+import com.example.chemten.view.HomeView.HomeFragmentDirections;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +23,9 @@ import com.example.chemten.R;
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment {
+
+    ImageView profile_image_back;
+    TextView profile_text_logout;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,5 +72,22 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        profile_image_back = view.findViewById(R.id.profile_image_back);
+        profile_image_back.setOnClickListener(view1 -> {
+            NavDirections action = ProfileFragmentDirections.actionProfileFragmentToHomeFragment();
+            Navigation.findNavController(view1).navigate(action);
+        });
+
+        profile_text_logout = view.findViewById(R.id.profile_text_logout);
+        profile_text_logout.setOnClickListener(view1 -> {
+            NavDirections action = ProfileFragmentDirections.actionProfileFragmentToLoginFragment2();
+            Navigation.findNavController(view1).navigate(action);
+        });
     }
 }

@@ -3,26 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
-
+    app:startDestination="@id/loginFragment2">
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.chemten.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
+        android:id="@+id/loginFragment2"
+        android:name="com.example.chemten.view.LoginView.LoginFragment"
+        android:label="fragment_login2"
+        tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_loginFragment2_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_loginFragment2_to_register"
+            app:destination="@id/register" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.chemten.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
+        android:id="@+id/homeFragment"
+        android:name="com.example.chemten.view.HomeView.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.chemten.view.ProfileView.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment2"
+            app:destination="@id/loginFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/register"
+        android:name="com.example.chemten.view.RegisterView.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_register_to_loginFragment2"
+            app:destination="@id/loginFragment2" />
     </fragment>
 </navigation>

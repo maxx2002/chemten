@@ -2,11 +2,16 @@ package com.example.chemten.view.LoginView;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.chemten.R;
 
@@ -16,6 +21,8 @@ import com.example.chemten.R;
  * create an instance of this fragment.
  */
 public class LoginFragment extends Fragment {
+
+    TextView login_text_register, login_text_login;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,6 +62,7 @@ public class LoginFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -62,5 +70,22 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        login_text_register = view.findViewById(R.id.login_text_register);
+        login_text_register.setOnClickListener(view1 -> {
+            NavDirections action = LoginFragmentDirections.actionLoginFragment2ToRegister();
+            Navigation.findNavController(view1).navigate(action);
+        });
+
+        login_text_login = view.findViewById(R.id.login_text_login);
+        login_text_login.setOnClickListener(view1 -> {
+            NavDirections action = LoginFragmentDirections.actionLoginFragment2ToHomeFragment();
+            Navigation.findNavController(view1).navigate(action);
+        });
     }
 }
