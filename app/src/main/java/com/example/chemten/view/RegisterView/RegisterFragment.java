@@ -5,13 +5,16 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.chemten.R;
 import com.example.chemten.view.LoginView.LoginFragmentDirections;
@@ -23,7 +26,10 @@ import com.example.chemten.view.LoginView.LoginFragmentDirections;
  */
 public class RegisterFragment extends Fragment {
 
-    TextView register_text_login;
+    TextView btn_register, btn_login;
+    EditText name_input, email_input, pass_input;
+
+    private RegisterViewModel registerViewModel;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,10 +82,40 @@ public class RegisterFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        register_text_login = view.findViewById(R.id.register_text_login);
-        register_text_login.setOnClickListener(view1 -> {
+        btn_login = view.findViewById(R.id.btn_login_register_fragment);
+        btn_login.setOnClickListener(view1 -> {
             NavDirections action = RegisterFragmentDirections.actionRegisterToLoginFragment2();
             Navigation.findNavController(view1).navigate(action);
+        });
+
+        name_input = view.findViewById(R.id.name_input_register_fragment);
+        email_input = view.findViewById(R.id.email_input_register_fragment);
+        pass_input = view.findViewById(R.id.pass_input_register_fragment);
+        btn_register = view.findViewById(R.id.btn_register_register_fragment);
+
+        registerViewModel = new ViewModelProvider(getActivity()).get(RegisterViewModel.class);
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!name_input.getText().toString().isEmpty()
+                &&!email_input.getText().toString().isEmpty()
+                &&!pass_input.getText().toString().isEmpty()){
+                    String name = name_input.getText().toString().trim();
+                    String email = email_input.getText().toString().trim();
+                    String pass = pass_input.getText().toString().trim();
+                    registerViewModel.register(name, email, pass).observe(requireActivity(), registerResponse -> {
+                        if(registerResponse != null){
+                            NavDirections actions = RegisterFragmentDirections.actionRegisterToLoginFragment2();
+                            Navigation.findNavController(view).navigate(actions);
+                            Toast.makeText(requireActivity(), "Register Success", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(requireActivity(), "Register Failed", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }else{
+                    Toast.makeText(requireActivity(), "All field must be filled", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
     }
 }

@@ -79,15 +79,15 @@
                         app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName"
+                        android:id="@+id/email_input_register_fragment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:ems="10"
+                        android:hint="Email"
                         android:inputType="textPersonName"
-                        android:text="Name"
-                        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
-                        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+                        app:layout_constraintStart_toStartOf="@+id/name_input_register_fragment"
+                        app:layout_constraintTop_toBottomOf="@+id/name_input_register_fragment" />
 
                     <ImageView
                         android:id="@+id/imageView4"
@@ -100,18 +100,18 @@
                         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName2"
+                        android:id="@+id/pass_input_register_fragment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:layout_marginBottom="8dp"
                         android:ems="10"
+                        android:hint="Password"
                         android:inputType="textPersonName"
-                        android:text="Name"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
-                        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-                        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+                        app:layout_constraintEnd_toEndOf="@+id/email_input_register_fragment"
+                        app:layout_constraintStart_toStartOf="@+id/email_input_register_fragment"
+                        app:layout_constraintTop_toBottomOf="@+id/email_input_register_fragment" />
 
                     <ImageView
                         android:id="@+id/imageView8"
@@ -124,14 +124,14 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName3"
+                        android:id="@+id/name_input_register_fragment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
                         android:layout_marginTop="8dp"
                         android:ems="10"
+                        android:hint="Name"
                         android:inputType="textPersonName"
-                        android:text="Name"
                         app:layout_constraintStart_toEndOf="@+id/imageView8"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -149,7 +149,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
             <TextView
-                android:id="@+id/textView23"
+                android:id="@+id/btn_register_register_fragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -181,7 +181,7 @@
                 app:layout_constraintTop_toTopOf="@+id/imageView6" />
 
             <TextView
-                android:id="@+id/register_text_login"
+                android:id="@+id/btn_login_register_fragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"

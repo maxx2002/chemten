@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
@@ -13,8 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.chemten.R;
+import com.example.chemten.helper.SharedPreferenceHelper;
 import com.example.chemten.view.HomeView.HomeFragmentDirections;
 
 /**
@@ -26,6 +29,10 @@ public class ProfileFragment extends Fragment {
 
     ImageView profile_image_back;
     TextView profile_text_logout;
+
+    private ProfileViewModel profileViewModel;
+    private SharedPreferenceHelper helper;
+    private static final String TAG = "ProfileFragment";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,6 +85,9 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        helper = SharedPreferenceHelper.getInstance(requireActivity());
+        profileViewModel = new ViewModelProvider(getActivity()).get(ProfileViewModel.class);
+        profileViewModel.init(helper.getAccessToken());
         profile_image_back = view.findViewById(R.id.profile_image_back);
         profile_image_back.setOnClickListener(view1 -> {
             NavDirections action = ProfileFragmentDirections.actionProfileFragmentToHomeFragment();
@@ -86,8 +96,20 @@ public class ProfileFragment extends Fragment {
 
         profile_text_logout = view.findViewById(R.id.profile_text_logout);
         profile_text_logout.setOnClickListener(view1 -> {
-            NavDirections action = ProfileFragmentDirections.actionProfileFragmentToLoginFragment2();
-            Navigation.findNavController(view1).navigate(action);
+            profileViewModel.logout().observe(requireActivity(), s -> {
+                if(!s.isEmpty()){
+                    helper.clearPref();
+                    NavDirections action = ProfileFragmentDirections.actionProfileFragmentToLoginFragment2();
+                    Navigation.findNavController(view1).navigate(action);
+                    Toast.makeText(requireActivity(), s, Toast.LENGTH_SHORT).show();
+                }
+            });
+
         });
+    }
+    @Override
+    public void onDetach(){
+        super.onDetach();
+        getActivity().getViewModelStore().clear();;
     }
 }

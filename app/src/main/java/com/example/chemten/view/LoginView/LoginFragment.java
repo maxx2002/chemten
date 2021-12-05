@@ -5,15 +5,20 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.chemten.R;
+import com.example.chemten.helper.SharedPreferenceHelper;
+import com.example.chemten.view.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,7 +27,11 @@ import com.example.chemten.R;
  */
 public class LoginFragment extends Fragment {
 
-    TextView login_text_register, login_text_login;
+    TextView btn_register, btn_login;
+    EditText email_input, pass_input;
+
+    private LoginViewModel loginViewModel;
+    private SharedPreferenceHelper helper;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -75,17 +84,49 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        login_text_register = view.findViewById(R.id.login_text_register);
-        login_text_register.setOnClickListener(view1 -> {
+        email_input = view.findViewById(R.id.email_input_login_fragment);
+        pass_input = view.findViewById(R.id.pass_input_login_fragment);
+        btn_register = view.findViewById(R.id.btn_register_login_fragment);
+        btn_register.setOnClickListener(view1 -> {
             NavDirections action = LoginFragmentDirections.actionLoginFragment2ToRegister();
             Navigation.findNavController(view1).navigate(action);
         });
 
-        login_text_login = view.findViewById(R.id.login_text_login);
-        login_text_login.setOnClickListener(view1 -> {
-            NavDirections action = LoginFragmentDirections.actionLoginFragment2ToHomeFragment();
-            Navigation.findNavController(view1).navigate(action);
+        loginViewModel = new ViewModelProvider(getActivity()).get(LoginViewModel.class);
+        helper = SharedPreferenceHelper.getInstance(requireActivity());
+        btn_login = view.findViewById(R.id.btn_login_login_fragment);
+        btn_login.setOnClickListener(view1 -> {
+            if(!email_input.getText().toString().isEmpty()
+                && !pass_input.getText().toString().isEmpty()){
+                String email = email_input.getText().toString().trim();
+                String pass = pass_input.getText().toString().trim();
+                loginViewModel.login(email, pass).observe(requireActivity(), tokenResponse -> {
+                    if(tokenResponse != null){
+                        helper.saveAccessToken(tokenResponse.getAuthorization());
+                        NavDirections action = LoginFragmentDirections.actionLoginFragment2ToHomeFragment();
+                        Navigation.findNavController(view1).navigate(action);
+                        Toast.makeText(requireActivity(), "login Success", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }else{
+                Toast.makeText(requireActivity(), "Please fill email and password", Toast.LENGTH_SHORT).show();
+            }
         });
+
     }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        ((MainActivity) getActivity()).getSupportActionBar().hide();
+//    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        ((MainActivity) getActivity()).getSupportActionBar().hide();
+//    }
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//        ((MainActivity) getActivity()).getSupportActionBar().hide();
+//    }
 }

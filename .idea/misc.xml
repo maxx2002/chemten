@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_home.xml" value="0.1641337386018237" />
+        <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_register.xml" value="0.2" />
         <entry key="..\:/Users/maxim/Documents/Semester3/MobileApps/UAS/chemten/app/src/main/res/drawable/dividerbg.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/maxim/Documents/Semester3/MobileApps/UAS/chemten/app/src/main/res/drawable/levelbg.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/maxim/Documents/Semester3/MobileApps/UAS/chemten/app/src/main/res/drawable/logoutbg.xml" value="0.25416666666666665" />
