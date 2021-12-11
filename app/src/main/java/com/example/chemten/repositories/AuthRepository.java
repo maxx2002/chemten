@@ -4,8 +4,8 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.chemten.helper.RegisterResponse;
-import com.example.chemten.helper.TokenResponse;
+import com.example.chemten.model.RegisterResponse;
+import com.example.chemten.model.TokenResponse;
 import com.example.chemten.retrofit.RetrofitService;
 
 import retrofit2.Call;

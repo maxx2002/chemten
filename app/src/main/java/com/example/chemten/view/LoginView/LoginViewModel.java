@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.chemten.helper.TokenResponse;
+import com.example.chemten.model.TokenResponse;
 import com.example.chemten.repositories.AuthRepository;
 
 public class LoginViewModel extends AndroidViewModel {

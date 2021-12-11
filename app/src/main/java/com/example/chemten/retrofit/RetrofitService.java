@@ -1,8 +1,10 @@
 package com.example.chemten.retrofit;
 
 import com.example.chemten.helper.Const;
-import com.example.chemten.helper.RegisterResponse;
-import com.example.chemten.helper.TokenResponse;
+
+import com.example.chemten.model.Lesson;
+import com.example.chemten.model.RegisterResponse;
+import com.example.chemten.model.TokenResponse;
 import com.google.gson.JsonObject;
 
 import okhttp3.OkHttpClient;
@@ -53,8 +55,29 @@ public class RetrofitService {
     public Call<TokenResponse> login(String email, String password){
         return api.login(email, password);
     }
-    public Call<RegisterResponse> register(String nama, String email, String password){
+    public Call<RegisterResponse> register(String nama, String email, String password) {
         return api.register(nama, email, password);
     }
-    public Call<JsonObject> logout(){return api.logout();}
+    public Call<Lesson> getLesson() {
+            return api.getLesson();
+        }
+        public Call<Lesson> getLessonDetail(String code) {
+            return api.getLessonDetail(code);
+        }
+
+        public Call<Lesson.Lessons> createLesson(Lesson.Lessons lessons) {
+            return api.createLesson(lessons);
+        }
+
+        public Call<Lesson.Lessons> editLesson(String code, Lesson.Lessons lessons) {
+            return api.editLesson(code, lessons);
+        }
+
+        public Call<Lesson> deleteLesson(String code){
+            return api.deleteLesson(code);
+        }
+
+    public Call<JsonObject> logout() {
+        return api.logout();
+    }
 }
