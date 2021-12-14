@@ -3,15 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/course_card.xml" value="0.22" />
-        <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_addlesson.xml" value="0.16111111111111112" />
-        <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_home.xml" value="0.5" />
-        <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_lesson.xml" value="0.16111111111111112" />
+        <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_home.xml" value="0.1641337386018237" />
         <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_login.xml" value="0.25" />
-        <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_question.xml" value="0.18" />
         <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_register.xml" value="0.2" />
-        <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_start_quiz.xml" value="0.16111111111111112" />
-        <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_sublesson.xml" value="0.16111111111111112" />
         <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten-main/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten-main/app/src/main/res/layout/course_card.xml" value="0.1" />
         <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten-main/app/src/main/res/layout/fragment_home.xml" value="0.1" />
@@ -29,6 +23,7 @@
         <entry key="..\:/Users/maxim/Documents/Semester3/MobileApps/UAS/chemten/app/src/main/res/layout/coursecard.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/maxim/Documents/Semester3/MobileApps/UAS/chemten/app/src/main/res/layout/fragment_first.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/maxim/Documents/Semester3/MobileApps/UAS/chemten/app/src/main/res/layout/fragment_home.xml" value="0.4" />
+        <entry key="..\:/Users/maxim/Documents/Semester3/MobileApps/UAS/chemten/app/src/main/res/layout/fragment_leaderboard.xml" value="0.264" />
         <entry key="..\:/Users/maxim/Documents/Semester3/MobileApps/UAS/chemten/app/src/main/res/layout/fragment_lesson.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/maxim/Documents/Semester3/MobileApps/UAS/chemten/app/src/main/res/layout/fragment_login.xml" value="0.4" />
         <entry key="..\:/Users/maxim/Documents/Semester3/MobileApps/UAS/chemten/app/src/main/res/layout/fragment_login2.xml" value="0.22395833333333334" />
@@ -36,7 +31,7 @@
         <entry key="..\:/Users/maxim/Documents/Semester3/MobileApps/UAS/chemten/app/src/main/res/layout/fragment_question.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/maxim/Documents/Semester3/MobileApps/UAS/chemten/app/src/main/res/layout/fragment_register.xml" value="0.4" />
         <entry key="..\:/Users/maxim/Documents/Semester3/MobileApps/UAS/chemten/app/src/main/res/layout/fragment_start_quiz.xml" value="0.23802083333333332" />
-        <entry key="..\:/Users/maxim/Documents/Semester3/MobileApps/UAS/chemten/app/src/main/res/layout/fragment_sublesson.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/maxim/Documents/Semester3/MobileApps/UAS/chemten/app/src/main/res/layout/fragment_sublesson.xml" value="0.264" />
       </map>
     </option>
   </component>
