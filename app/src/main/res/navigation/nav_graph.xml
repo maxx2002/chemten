@@ -46,4 +46,9 @@
             android:id="@+id/action_register_to_loginFragment2"
             app:destination="@id/loginFragment2" />
     </fragment>
+    <fragment
+        android:id="@+id/lessonFragment"
+        android:name="com.example.chemten.view.LessonView.LessonFragment"
+        android:label="fragment_lesson"
+        tools:layout="@layout/fragment_lesson" />
 </navigation>

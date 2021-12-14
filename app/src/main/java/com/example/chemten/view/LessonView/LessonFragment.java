@@ -2,13 +2,27 @@ package com.example.chemten.view.LessonView;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.chemten.R;
+import com.example.chemten.helper.SharedPreferenceHelper;
+import com.example.chemten.model.Lesson;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +30,12 @@ import com.example.chemten.R;
  * create an instance of this fragment.
  */
 public class LessonFragment extends Fragment {
+    FloatingActionButton btn_add;
+
+    private LessonViewModel lessonViewModel;
+    private LessonAdapter lessonAdapter;
+    private RecyclerView recyclerView;
+    private SharedPreferenceHelper helper;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,5 +82,41 @@ public class LessonFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_lesson, container, false);
+
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        recyclerView = view.findViewById(R.id.rv_lesson);
+        helper = SharedPreferenceHelper.getInstance(requireActivity());
+        lessonViewModel = new ViewModelProvider(getActivity()).get(LessonViewModel.class);
+        lessonViewModel.init(helper.getAccessToken());
+        lessonViewModel.getLesson();
+        lessonViewModel.getResultLesson().observe(getActivity(), showCourses);
+
+        btn_add = view.findViewById(R.id.btn_add);
+        btn_add.setOnClickListener(view1 -> {
+            //NavDirections actions = LessonFragmentDirections.actionLessonFragmentToAddLessonFragment();
+            //Navigation.findNavController(view1).navigate(actions);
+        });
+    }
+    List<Lesson.Lessons> results = new ArrayList<>();
+    LinearLayoutManager linearLayoutManager;
+
+    private Observer<Lesson> showCourses = new Observer<Lesson>() {
+        @Override
+        public void onChanged(Lesson course) {
+            results = course.getLesson();
+            linearLayoutManager = new LinearLayoutManager(getActivity());
+            recyclerView.setLayoutManager(linearLayoutManager);
+            lessonAdapter = new LessonAdapter(getActivity());
+            lessonAdapter.setLessonsList(results);
+            recyclerView.setAdapter(lessonAdapter);
+        }
+    };
+
+    @Override
+    public void onDetach(){
+        super.onDetach();
+        getActivity().getViewModelStore().clear();
     }
 }

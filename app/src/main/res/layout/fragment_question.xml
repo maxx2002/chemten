@@ -93,7 +93,7 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
                 android:background="@drawable/answerbg">
 
                 <TextView
-                    android:id="@+id/textView29"
+                    android:id="@+id/choice1_question_fragment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pilihan 1"
@@ -125,7 +125,7 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
                 android:background="@drawable/answerbg">
 
                 <TextView
-                    android:id="@+id/textView29"
+                    android:id="@+id/choice2_question_fragment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pilihan 2"
@@ -157,7 +157,7 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
                 android:background="@drawable/answerbg">
 
                 <TextView
-                    android:id="@+id/textView29"
+                    android:id="@+id/choice3_question_fragment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pilihan 3"
@@ -190,7 +190,7 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
                 android:background="@drawable/answerbg">
 
                 <TextView
-                    android:id="@+id/textView29"
+                    android:id="@+id/choice4_question_fragment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pilihan 4"

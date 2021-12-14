@@ -34,7 +34,7 @@ tools:context=".view.LessonView.SublessonView.SublessonFragment">
             android:layout_height="70dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
-            android:src="@drawable/Asset7"
+            android:src="@drawable/asset7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

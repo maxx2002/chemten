@@ -35,7 +35,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.CardViewVi
     @NonNull
     @Override
     public LessonAdapter.CardViewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.cv_lesson, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.course_card, parent, false);
         return new CardViewViewHolder(view);
     }
 
@@ -50,7 +50,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.CardViewVi
         holder.cardView.setOnClickListener(view -> {
             Bundle bundle = new Bundle();
             bundle.putString("lesson_id", results.getLesson_id(). toLowerCase());
-            Navigation.findNavController(view).navigate(R.id.action_lessonFragment2_to_detailLessonFragment, bundle);
+            //Navigation.findNavController(view).navigate(R.id.action_lessonFragment2_to_detailLessonFragment, bundle);
         });
     }
 
