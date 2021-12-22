@@ -7,19 +7,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.chemten.R;
 import com.example.chemten.helper.SharedPreferenceHelper;
-import com.example.chemten.model.Lesson;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.chemten.model.Lessons;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +28,12 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class LessonFragment extends Fragment {
-    FloatingActionButton btn_add;
 
     private LessonViewModel lessonViewModel;
     private LessonAdapter lessonAdapter;
     private RecyclerView recyclerView;
     private SharedPreferenceHelper helper;
+    private TextView lesson_topic;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -86,26 +84,26 @@ public class LessonFragment extends Fragment {
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        recyclerView = view.findViewById(R.id.rv_lesson);
+        recyclerView = view.findViewById(R.id.rv_sublesson_lesson_fragment);
+        lesson_topic = view.findViewById(R.id.text_lesson_topic_lesson_fragment);
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         lessonViewModel = new ViewModelProvider(getActivity()).get(LessonViewModel.class);
         lessonViewModel.init(helper.getAccessToken());
-        lessonViewModel.getLesson();
-        lessonViewModel.getResultLesson().observe(getActivity(), showCourses);
+        int code = getArguments().getInt("lesson_id");
+        String lesson_topic_bundle = getArguments().getString("lesson_topic");
+        lesson_topic.setText(lesson_topic_bundle);
+        lessonViewModel.getLessonDetail(code);
+        lessonViewModel.getResultLessonDetail().observe(getActivity(), showLessonsDetail);
 
-        btn_add = view.findViewById(R.id.btn_add);
-        btn_add.setOnClickListener(view1 -> {
-            //NavDirections actions = LessonFragmentDirections.actionLessonFragmentToAddLessonFragment();
-            //Navigation.findNavController(view1).navigate(actions);
-        });
+
     }
-    List<Lesson.Lessons> results = new ArrayList<>();
+    List<Lessons.Sublesson> results = new ArrayList<>();
     LinearLayoutManager linearLayoutManager;
 
-    private Observer<Lesson> showCourses = new Observer<Lesson>() {
+    private Observer<Lessons> showLessonsDetail = new Observer<Lessons>() {
         @Override
-        public void onChanged(Lesson course) {
-            results = course.getLesson();
+        public void onChanged(Lessons lesson) {
+            results = lesson.getSublesson();
             linearLayoutManager = new LinearLayoutManager(getActivity());
             recyclerView.setLayoutManager(linearLayoutManager);
             lessonAdapter = new LessonAdapter(getActivity());

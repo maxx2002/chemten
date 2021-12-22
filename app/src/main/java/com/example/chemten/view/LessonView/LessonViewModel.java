@@ -10,7 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.chemten.repositories.LessonRepository;
 
-import com.example.chemten.model.Lesson;
+import com.example.chemten.model.Lessons;
 
 public class LessonViewModel extends AndroidViewModel {
 
@@ -27,28 +27,24 @@ public class LessonViewModel extends AndroidViewModel {
     }
 
     //== Begin of view model to get all lesson
-    private MutableLiveData<Lesson> resultLesson = new MutableLiveData<>();
+    private MutableLiveData<Lessons> resultLesson = new MutableLiveData<>();
     public void getLesson(){
         resultLesson = lessonRepository.getLesson();
     }
-    public LiveData<Lesson> getResultLesson() {
+    public LiveData<Lessons> getResultLesson() {
         return resultLesson;
     }
 
     //== Begin of view model to get detail lesson
-    private MutableLiveData<Lesson> resultLessonDetail = new MutableLiveData<>();
-    public void getLessonDetail(String code) {
+    private MutableLiveData<Lessons> resultLessonDetail = new MutableLiveData<>();
+    public void getLessonDetail(int code) {
         resultLessonDetail = lessonRepository.getLessonDetail(code);
     }
-    public LiveData<Lesson> getResultLessonDetail()
+    public LiveData<Lessons> getResultLessonDetail()
     {
         return resultLessonDetail;
     }
 
-    //== Begin of view model to delete specific lesson
-    public LiveData<String> deleteLesson(String code) {
-        return lessonRepository.deleteLesson(code);
-    }
 
     @Override
     protected void onCleared() {

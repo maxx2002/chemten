@@ -1,7 +1,8 @@
 package com.example.chemten.retrofit;
 
-import com.example.chemten.model.Lesson;
+import com.example.chemten.model.Lessons;
 import com.example.chemten.model.RegisterResponse;
+import com.example.chemten.model.SubLessons;
 import com.example.chemten.model.TokenResponse;
 import com.google.gson.JsonObject;
 
@@ -20,26 +21,19 @@ public interface ApiEndPoints {
     @FormUrlEncoded
     Call<TokenResponse> login(@Field("email") String email, @Field("password") String password);
 
+    @POST("logout")
+    Call<JsonObject> logout();
+
     @POST("register")
     @FormUrlEncoded
     Call<RegisterResponse> register(@Field("name") String name, @Field("email") String email, @Field("password") String password);
 
-    @GET("lessons")
-    Call<Lesson> getLesson();
+    @GET("lesson")
+    Call<Lessons> getLesson();
 
-    @GET("lessons/{lesson}")
-    Call<Lesson> getLessonDetail(@Path("lesson") String code);
+    @GET("lesson/{lesson}")
+    Call<Lessons> getLessonDetail(@Path("lesson") int code);
 
-    @POST("lessons")
-    Call<Lesson.Lessons> createLesson(@Body Lesson.Lessons lesson);
-
-    @PUT("lessons/{lesson}")
-    Call<Lesson.Lessons> editLesson(@Path("lesson") String code, @Body Lesson.Lessons lesson);
-
-    @DELETE("courses/{course}")
-    Call<Lesson> deleteLesson(@Path("course") String code);
-
-    @POST("logout")
-    Call<JsonObject> logout();
-
+    @GET("sublesson")
+    Call<SubLessons> getSublesson();
 }

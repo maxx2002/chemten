@@ -4,39 +4,40 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.chemten.model.Lessons;
+import com.example.chemten.model.SubLessons;
 import com.example.chemten.retrofit.RetrofitService;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.example.chemten.model.Lessons;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LessonRepository {
-    private static LessonRepository lessonRepository;
+public class HomeRepository {
+    private static HomeRepository homeRepository;
     private RetrofitService apiService;
-    private static final String TAG = "LessonRepository";
+    private static final String TAG = "HomeRepository";
 
-    private LessonRepository(String token) {
+    private HomeRepository(String token) {
         Log.d(TAG, "token: "+ token);
         apiService = RetrofitService.getInstance(token);
     }
 
-    public static LessonRepository getInstance(String token) {
-        if (lessonRepository == null) {
-            lessonRepository = new LessonRepository(token);
+    public static HomeRepository getInstance(String token) {
+        if (homeRepository == null) {
+            homeRepository = new HomeRepository(token);
         }
-        return lessonRepository;
+        return homeRepository;
     }
 
     public synchronized void resetInstance(){
-        if (lessonRepository != null){
-            lessonRepository = null;
+        if (homeRepository != null){
+            homeRepository = null;
         }else {
-            lessonRepository = null;
+            homeRepository = null;
         }
     }
 
@@ -49,7 +50,7 @@ public class LessonRepository {
                 Log.d(TAG, "onResponse: "+response.code());
                 if (response.isSuccessful()){
                     if (response.body() != null) {
-                        Log.d(TAG, "onResponse" + response.body().getLesson().size());
+                        Log.d(TAG, "onResponse" + response.body());
                         listLesson.postValue(response.body());
                     }
                 }
@@ -88,4 +89,3 @@ public class LessonRepository {
         return listLessonDetail;
     }
 }
-

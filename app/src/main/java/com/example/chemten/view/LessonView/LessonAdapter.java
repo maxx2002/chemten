@@ -16,19 +16,19 @@ import com.example.chemten.R;
 
 import java.util.List;
 
-import com.example.chemten.model.Lesson;
+import com.example.chemten.model.Lessons;
 
 public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.CardViewViewHolder> {
     private Context context;
-    private List<Lesson.Lessons> lessonsList;
+    private List<Lessons.Sublesson> lessonsList;
 
     public LessonAdapter(Context context){
         this.context = context;
     }
-    public List<Lesson.Lessons> getLessonsList(){
+    public List<Lessons.Sublesson> getSublessonsList(){
         return lessonsList;
     }
-    public void setLessonsList (List<Lesson.Lessons> lessons){
+    public void setLessonsList (List<Lessons.Sublesson> lessonsList){
         this.lessonsList = lessonsList;
     }
 
@@ -41,16 +41,15 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.CardViewVi
 
     @Override
     public void onBindViewHolder(@NonNull LessonAdapter.CardViewViewHolder holder, int position) {
-        final Lesson.Lessons results = getLessonsList().get(position);
-        holder.lesson_id.setText(results.getLesson_id());
-        holder.lesson_topic.setText(results.getLesson_topic());
-        holder.lesson_level.setText(results.getLesson_level());
-        holder.lesson_image.setText(results.getLesson_image());
-        holder.lesson_description.setText(results.getLesson_description());
+        final Lessons.Sublesson results = getSublessonsList().get(position);
+        holder.lesson_topic.setText(results.getSublesson_description());
+        holder.lesson_level.setText(results.getSublesson_topic());
         holder.cardView.setOnClickListener(view -> {
             Bundle bundle = new Bundle();
-            bundle.putString("lesson_id", results.getLesson_id(). toLowerCase());
-            //Navigation.findNavController(view).navigate(R.id.action_lessonFragment2_to_detailLessonFragment, bundle);
+            bundle.putInt("sublesson_id", results.getId());
+            bundle.putString("sublesson_topic", results.getSublesson_topic());
+            bundle.putString("sublesson_desc", results.getSublesson_description());
+            Navigation.findNavController(view).navigate(R.id.action_lessonFragment_to_sublessonFragment, bundle);
         });
     }
 
@@ -60,15 +59,12 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.CardViewVi
     }
 
     public class CardViewViewHolder extends RecyclerView.ViewHolder {
-        TextView lesson_id, lesson_topic, lesson_level, lesson_image, lesson_description;
+        TextView lesson_topic, lesson_level;
         CardView cardView;
         public CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
-            lesson_id = itemView.findViewById(R.id.lesson_id);
-            lesson_topic = itemView.findViewById(R.id.lesson_topic);
-            lesson_level = itemView.findViewById(R.id.lesson_level);
-            lesson_image = itemView.findViewById(R.id.lesson_image);
-            lesson_description = itemView.findViewById(R.id.lesson_description);
+            lesson_topic = itemView.findViewById(R.id.text_topic_cv_lesson);
+            lesson_level = itemView.findViewById(R.id.text_level_cv_lesson);
             cardView = itemView.findViewById(R.id.cv_layout_lesson);
         }
     }

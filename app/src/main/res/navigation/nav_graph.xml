@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_lessonFragment"
+            app:destination="@id/lessonFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -50,5 +53,14 @@
         android:id="@+id/lessonFragment"
         android:name="com.example.chemten.view.LessonView.LessonFragment"
         android:label="fragment_lesson"
-        tools:layout="@layout/fragment_lesson" />
+        tools:layout="@layout/fragment_lesson" >
+        <action
+            android:id="@+id/action_lessonFragment_to_sublessonFragment"
+            app:destination="@id/sublessonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sublessonFragment"
+        android:name="com.example.chemten.view.LessonView.SublessonView.SublessonFragment"
+        android:label="fragment_sublesson"
+        tools:layout="@layout/fragment_sublesson" />
 </navigation>

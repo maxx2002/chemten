@@ -9,7 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.chemten.repositories.LessonRepository;
 
-import com.example.chemten.model.Lesson;
+import com.example.chemten.model.Lessons;
 
 public class AddLessonViewModel extends AndroidViewModel {
     private LessonRepository lessonRepository;
@@ -22,14 +22,6 @@ public class AddLessonViewModel extends AndroidViewModel {
     public void init(String token) {
         Log.d(TAG, "token: "+token);
         lessonRepository = LessonRepository.getInstance(token);
-    }
-
-    public MutableLiveData<Lesson.Lessons> createLesson(Lesson.Lessons lessons) {
-        return lessonRepository.createLesson(lessons);
-    }
-
-    public MutableLiveData<Lesson.Lessons> editLesson(String code, Lesson.Lessons lessons) {
-        return lessonRepository.editLesson(code, lessons);
     }
 }
 
