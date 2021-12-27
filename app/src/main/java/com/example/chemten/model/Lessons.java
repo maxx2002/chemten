@@ -107,9 +107,9 @@ public class Lessons implements Parcelable {
         private String sublesson_image;
         private String sublesson_description;
 
-        public static SubLessons.Sublesson objectFromData(String str) {
+        public static Lessons.Sublesson objectFromData(String str) {
 
-            return new Gson().fromJson(str, SubLessons.Sublesson.class);
+            return new Gson().fromJson(str, Lessons.Sublesson.class);
         }
 
         public int getId() {

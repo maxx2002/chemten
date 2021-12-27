@@ -2,7 +2,9 @@ package com.example.chemten.retrofit;
 
 import com.example.chemten.helper.Const;
 
+import com.example.chemten.model.Exercises;
 import com.example.chemten.model.Lessons;
+import com.example.chemten.model.Questions;
 import com.example.chemten.model.RegisterResponse;
 import com.example.chemten.model.TokenResponse;
 import com.google.gson.JsonObject;
@@ -67,6 +69,6 @@ public class RetrofitService {
     public Call<Lessons> getLessonDetail(int code) {
             return api.getLessonDetail(code);
     }
-
+    public Call<Exercises> getExerciseDetail(int code) { return api.getExerciseDetail(code);}
 
 }

@@ -57,10 +57,27 @@
         <action
             android:id="@+id/action_lessonFragment_to_sublessonFragment"
             app:destination="@id/sublessonFragment" />
+        <action
+            android:id="@+id/action_lessonFragment_to_startQuizFragment"
+            app:destination="@id/startQuizFragment" />
     </fragment>
     <fragment
         android:id="@+id/sublessonFragment"
         android:name="com.example.chemten.view.LessonView.SublessonView.SublessonFragment"
         android:label="fragment_sublesson"
         tools:layout="@layout/fragment_sublesson" />
+    <fragment
+        android:id="@+id/startQuizFragment"
+        android:name="com.example.chemten.view.QuizView.StartQuizFragment"
+        android:label="fragment_start_quiz"
+        tools:layout="@layout/fragment_start_quiz" >
+        <action
+            android:id="@+id/action_startQuizFragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionFragment"
+        android:name="com.example.chemten.view.QuizView.QuestionView.QuestionFragment"
+        android:label="fragment_question"
+        tools:layout="@layout/fragment_question" />
 </navigation>

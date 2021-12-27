@@ -51,7 +51,7 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
             app:layout_constraintTop_toBottomOf="@+id/imageView23" />
 
         <TextView
-            android:id="@+id/textView27"
+            android:id="@+id/text_totalpertanyaan_question_fragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -63,19 +63,21 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
             app:layout_constraintTop_toBottomOf="@+id/imageView24" />
 
         <TextView
-            android:id="@+id/textView28"
-            android:layout_width="wrap_content"
+            android:id="@+id/text_soal_question_fragment"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
             android:text="Soal"
             android:textColor="@color/white"
             android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView27" />
+            app:layout_constraintTop_toBottomOf="@+id/text_totalpertanyaan_question_fragment" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView2"
+            android:id="@+id/btn_choice1_question_fragment"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="64dp"
@@ -85,7 +87,7 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
             app:cardBackgroundColor="@color/bluebg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView28">
+            app:layout_constraintTop_toBottomOf="@+id/text_soal_question_fragment">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -93,7 +95,7 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
                 android:background="@drawable/answerbg">
 
                 <TextView
-                    android:id="@+id/choice1_question_fragment"
+                    android:id="@+id/text_choice1_question_fragment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pilihan 1"
@@ -107,7 +109,7 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView3"
+            android:id="@+id/btn_choice2_question_fragment"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="64dp"
@@ -117,7 +119,7 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
             app:cardBackgroundColor="@color/bluebg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView2">
+            app:layout_constraintTop_toBottomOf="@+id/btn_choice1_question_fragment">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -125,7 +127,7 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
                 android:background="@drawable/answerbg">
 
                 <TextView
-                    android:id="@+id/choice2_question_fragment"
+                    android:id="@+id/text_choice2_question_fragment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pilihan 2"
@@ -139,7 +141,7 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView4"
+            android:id="@+id/btn_choice3_question_fragment"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="64dp"
@@ -149,7 +151,7 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
             app:cardBackgroundColor="@color/bluebg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView3">
+            app:layout_constraintTop_toBottomOf="@+id/btn_choice2_question_fragment">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -157,7 +159,7 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
                 android:background="@drawable/answerbg">
 
                 <TextView
-                    android:id="@+id/choice3_question_fragment"
+                    android:id="@+id/text_choice3_question_fragment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pilihan 3"
@@ -171,6 +173,7 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/btn_choice4_question_fragment"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="64dp"
@@ -182,7 +185,7 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView4">
+            app:layout_constraintTop_toBottomOf="@+id/btn_choice3_question_fragment">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -190,7 +193,7 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
                 android:background="@drawable/answerbg">
 
                 <TextView
-                    android:id="@+id/choice4_question_fragment"
+                    android:id="@+id/text_choice4_question_fragment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pilihan 4"

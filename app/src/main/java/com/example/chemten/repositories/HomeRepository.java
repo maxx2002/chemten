@@ -5,12 +5,7 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.chemten.model.Lessons;
-import com.example.chemten.model.SubLessons;
 import com.example.chemten.retrofit.RetrofitService;
-import com.google.gson.Gson;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;

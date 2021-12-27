@@ -39,7 +39,7 @@ tools:context=".view.QuizView.StartQuizFragment">
             app:layout_constraintTop_toBottomOf="@+id/imageView22" />
 
         <TextView
-            android:id="@+id/textView30"
+            android:id="@+id/exercise_level_startquiz_fragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -51,7 +51,7 @@ tools:context=".view.QuizView.StartQuizFragment">
             app:layout_constraintTop_toBottomOf="@+id/imageView25" />
 
         <TextView
-            android:id="@+id/textView31"
+            android:id="@+id/exercise_topic_startquiz_fragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -61,22 +61,24 @@ tools:context=".view.QuizView.StartQuizFragment">
             android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView30" />
+            app:layout_constraintTop_toBottomOf="@+id/exercise_level_startquiz_fragment" />
 
         <TextView
-            android:id="@+id/textView32"
-            android:layout_width="wrap_content"
+            android:id="@+id/exercise_desc_startquiz_fragment"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
             android:text="deskripsi"
             android:textColor="@color/white"
             android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView31" />
+            app:layout_constraintTop_toBottomOf="@+id/exercise_topic_startquiz_fragment" />
 
         <android.widget.Button
-            android:id="@+id/button"
+            android:id="@+id/btn_start_startquiz_fragment"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -88,7 +90,7 @@ tools:context=".view.QuizView.StartQuizFragment">
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView32" />
+            app:layout_constraintTop_toBottomOf="@+id/exercise_desc_startquiz_fragment" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

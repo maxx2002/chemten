@@ -7,9 +7,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +36,7 @@ public class LessonFragment extends Fragment {
     private LessonAdapter lessonAdapter;
     private RecyclerView recyclerView;
     private SharedPreferenceHelper helper;
-    private TextView lesson_topic;
+    private TextView lesson_topic, btn_exercise;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -86,6 +89,7 @@ public class LessonFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         recyclerView = view.findViewById(R.id.rv_sublesson_lesson_fragment);
         lesson_topic = view.findViewById(R.id.text_lesson_topic_lesson_fragment);
+        btn_exercise = view.findViewById(R.id.btn_exercise_lesson_fragment);
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         lessonViewModel = new ViewModelProvider(getActivity()).get(LessonViewModel.class);
         lessonViewModel.init(helper.getAccessToken());
@@ -95,7 +99,14 @@ public class LessonFragment extends Fragment {
         lessonViewModel.getLessonDetail(code);
         lessonViewModel.getResultLessonDetail().observe(getActivity(), showLessonsDetail);
 
-
+        btn_exercise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("exercise_level", getArguments().getString("lesson_level"));
+                Navigation.findNavController(view).navigate(R.id.action_lessonFragment_to_startQuizFragment, bundle);
+            }
+        });
     }
     List<Lessons.Sublesson> results = new ArrayList<>();
     LinearLayoutManager linearLayoutManager;

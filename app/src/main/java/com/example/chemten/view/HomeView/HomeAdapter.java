@@ -48,6 +48,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CardViewViewHo
             Bundle bundle = new Bundle();
             bundle.putInt("lesson_id", results.getId());
             bundle.putString("lesson_topic", results.getLesson_topic());
+            bundle.putString("lesson_level", results.getLesson_level());
             Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_lessonFragment, bundle);
         });
     }
