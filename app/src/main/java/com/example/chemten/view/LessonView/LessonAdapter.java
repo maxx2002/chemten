@@ -49,6 +49,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.CardViewVi
             bundle.putInt("sublesson_id", results.getId());
             bundle.putString("sublesson_topic", results.getSublesson_topic());
             bundle.putString("sublesson_desc", results.getSublesson_description());
+            bundle.putString("sublesson_image", results.getSublesson_image());
             Navigation.findNavController(view).navigate(R.id.action_lessonFragment_to_sublessonFragment, bundle);
         });
     }

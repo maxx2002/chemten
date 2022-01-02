@@ -16,13 +16,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.chemten.R;
+import com.example.chemten.helper.Const;
 import com.example.chemten.helper.SharedPreferenceHelper;
 import com.example.chemten.model.Exercises;
 import com.example.chemten.model.Lessons;
 import com.example.chemten.view.LessonView.LessonAdapter;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +36,7 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class StartQuizFragment extends Fragment {
-
+    ImageView img_thumbnail, btn_back;
     TextView exercise_topic, exercise_desc, exercise_level, btn_start;
 
     private StartQuizViewModel startQuizViewModel;
@@ -93,6 +96,8 @@ public class StartQuizFragment extends Fragment {
         exercise_level = view.findViewById(R.id.exercise_level_startquiz_fragment);
         exercise_desc = view.findViewById(R.id.exercise_desc_startquiz_fragment);
         btn_start = view.findViewById(R.id.btn_start_startquiz_fragment);
+        img_thumbnail = view.findViewById(R.id.img_startquiz_fragment);
+        btn_back = view.findViewById(R.id.btn_back_startquiz_fragment);
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         startQuizViewModel = new ViewModelProvider(getActivity()).get(StartQuizViewModel.class);
@@ -110,6 +115,9 @@ public class StartQuizFragment extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.action_startQuizFragment_to_questionFragment, bundle);
             }
         });
+        btn_back.setOnClickListener(view1 -> {
+            getActivity().onBackPressed();
+        });
     }
 
     List<Exercises.Exercise> exerciseList = new ArrayList<>();
@@ -121,6 +129,7 @@ public class StartQuizFragment extends Fragment {
             exerciseList = exercises.getExercise();
             questionList = exercises.getQuestion();
 
+            Picasso.get().load(Const.BASE_URL + "image/"+exerciseList.get(0).getExercise_image()).resize(1000, 0).into(img_thumbnail);
             exercise_topic.setText(exerciseList.get(0).getExercise_topic());
             exercise_level.setText(exerciseList.get(0).getExercise_level());
             exercise_desc.setText(exerciseList.get(0).getExercise_description());

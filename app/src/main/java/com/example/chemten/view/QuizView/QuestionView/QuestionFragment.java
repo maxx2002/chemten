@@ -1,23 +1,29 @@
 package com.example.chemten.view.QuizView.QuestionView;
 
+import android.app.AlertDialog;
+import android.app.DialogFragment;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.chemten.R;
 import com.example.chemten.helper.SharedPreferenceHelper;
 import com.example.chemten.model.Exercises;
+import com.example.chemten.view.Dialog.BackDialog;
 import com.example.chemten.view.QuizView.StartQuizViewModel;
 
 import java.util.ArrayList;
@@ -32,6 +38,7 @@ public class QuestionFragment extends Fragment {
     TextView text_choice1, text_choice2, text_choice3, text_choice4, text_soal, text_totalpertanyaan;
     CardView btn_choice1, btn_choice2, btn_choice3, btn_choice4;
     List<Exercises.Question> questionList = new ArrayList<>();
+    ImageView btn_back;
 
     private int currentquestion = 0;
     private int score = 0;
@@ -100,6 +107,7 @@ public class QuestionFragment extends Fragment {
         btn_choice2 = view.findViewById(R.id.btn_choice2_question_fragment);
         btn_choice3 = view.findViewById(R.id.btn_choice3_question_fragment);
         btn_choice4 = view.findViewById(R.id.btn_choice4_question_fragment);
+        btn_back = view.findViewById(R.id.btn_back_question_fragment);
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         startQuizViewModel = new ViewModelProvider(getActivity()).get(StartQuizViewModel.class);
@@ -155,6 +163,11 @@ public class QuestionFragment extends Fragment {
                 munculkanscore();
             }
         });
+        btn_back.setOnClickListener(view15 -> {
+            FragmentManager fm = getActivity().getSupportFragmentManager();
+            BackDialog dialog = new BackDialog();
+            dialog.show(fm, "dialog");
+        });
     }
     private Observer<Exercises> showLessonsDetail = new Observer<Exercises>() {
         @Override
@@ -181,5 +194,27 @@ public class QuestionFragment extends Fragment {
         btn_choice2.setVisibility(View.INVISIBLE);
         btn_choice3.setVisibility(View.INVISIBLE);
         btn_choice4.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    // handle back button's click listener
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    BackDialog dialog = new BackDialog();
+                    dialog.show(fm, "dialog");
+                    return true;
+                }
+                return false;
+            }
+        });
+
     }
 }

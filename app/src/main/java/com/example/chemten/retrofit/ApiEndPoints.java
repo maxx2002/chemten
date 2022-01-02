@@ -33,4 +33,7 @@ public interface ApiEndPoints {
 
     @GET("exercise/{exercise}")
     Call<Exercises> getExerciseDetail(@Path("exercise") int code);
+
+    @GET("image")
+    Call<JsonObject> getImage();
 }

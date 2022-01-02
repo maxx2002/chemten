@@ -70,5 +70,5 @@ public class RetrofitService {
             return api.getLessonDetail(code);
     }
     public Call<Exercises> getExerciseDetail(int code) { return api.getExerciseDetail(code);}
-
+    public Call<JsonObject> getImage(){return api.getImage();}
 }

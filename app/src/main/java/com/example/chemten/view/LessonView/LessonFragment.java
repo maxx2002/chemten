@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.chemten.R;
@@ -31,7 +32,7 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class LessonFragment extends Fragment {
-
+    ImageView btn_back;
     private LessonViewModel lessonViewModel;
     private LessonAdapter lessonAdapter;
     private RecyclerView recyclerView;
@@ -90,6 +91,7 @@ public class LessonFragment extends Fragment {
         recyclerView = view.findViewById(R.id.rv_sublesson_lesson_fragment);
         lesson_topic = view.findViewById(R.id.text_lesson_topic_lesson_fragment);
         btn_exercise = view.findViewById(R.id.btn_exercise_lesson_fragment);
+        btn_back = view.findViewById(R.id.btn_back_lesson_fragment);
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         lessonViewModel = new ViewModelProvider(getActivity()).get(LessonViewModel.class);
         lessonViewModel.init(helper.getAccessToken());
@@ -105,6 +107,12 @@ public class LessonFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("exercise_level", getArguments().getString("lesson_level"));
                 Navigation.findNavController(view).navigate(R.id.action_lessonFragment_to_startQuizFragment, bundle);
+            }
+        });
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
             }
         });
     }

@@ -19,7 +19,7 @@ tools:context=".view.QuizView.StartQuizFragment">
         android:layout_height="wrap_content" >
 
         <ImageView
-            android:id="@+id/imageView22"
+            android:id="@+id/btn_back_startquiz_fragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -36,7 +36,7 @@ tools:context=".view.QuizView.StartQuizFragment">
             android:src="@drawable/botol1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView22" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_back_startquiz_fragment" />
 
         <TextView
             android:id="@+id/exercise_level_startquiz_fragment"
@@ -75,7 +75,7 @@ tools:context=".view.QuizView.StartQuizFragment">
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/exercise_topic_startquiz_fragment" />
+            app:layout_constraintTop_toBottomOf="@+id/img_startquiz_fragment" />
 
         <android.widget.Button
             android:id="@+id/btn_start_startquiz_fragment"
@@ -91,6 +91,18 @@ tools:context=".view.QuizView.StartQuizFragment">
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/exercise_desc_startquiz_fragment" />
+
+        <ImageView
+            android:id="@+id/img_startquiz_fragment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exercise_topic_startquiz_fragment"
+            tools:src="@tools:sample/avatars" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
