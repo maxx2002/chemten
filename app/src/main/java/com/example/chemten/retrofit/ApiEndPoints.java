@@ -4,6 +4,7 @@ import com.example.chemten.model.Exercises;
 import com.example.chemten.model.Lessons;
 import com.example.chemten.model.RegisterResponse;
 import com.example.chemten.model.TokenResponse;
+import com.example.chemten.model.Users;
 import com.google.gson.JsonObject;
 
 import retrofit2.Call;
@@ -36,4 +37,7 @@ public interface ApiEndPoints {
 
     @GET("image")
     Call<JsonObject> getImage();
+
+    @GET("leaderboard")
+    Call<Users> getUser();
 }

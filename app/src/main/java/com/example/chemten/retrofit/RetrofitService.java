@@ -7,6 +7,7 @@ import com.example.chemten.model.Lessons;
 import com.example.chemten.model.Questions;
 import com.example.chemten.model.RegisterResponse;
 import com.example.chemten.model.TokenResponse;
+import com.example.chemten.model.Users;
 import com.google.gson.JsonObject;
 
 import okhttp3.OkHttpClient;
@@ -71,4 +72,7 @@ public class RetrofitService {
     }
     public Call<Exercises> getExerciseDetail(int code) { return api.getExerciseDetail(code);}
     public Call<JsonObject> getImage(){return api.getImage();}
+    public Call<Users> getUser(){
+        return api.getUser();
+    }
 }

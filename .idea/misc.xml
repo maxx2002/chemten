@@ -15,8 +15,6 @@
         <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_register.xml" value="0.2" />
         <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_start_quiz.xml" value="0.25" />
         <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_sublesson.xml" value="0.2" />
-        <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten-clone/chemten/app/src/main/res/layout/fragment_register.xml" value="0.16576086956521738" />
-        <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten-clone/chemten/app/src/main/res/layout/fragment_start_quiz.xml" value="0.16576086956521738" />
         <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten-main/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten-main/app/src/main/res/layout/course_card.xml" value="0.1" />
         <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten-main/app/src/main/res/layout/fragment_home.xml" value="0.1" />
@@ -26,6 +24,21 @@
         <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten-main/app/src/main/res/layout/fragment_register.xml" value="0.1" />
         <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten-main/app/src/main/res/layout/fragment_sublesson.xml" value="0.1" />
         <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten-main/app/src/main/res/menu/menu_main.xml" value="0.2" />
+        <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten/app/src/main/res/drawable/card_edge.xml" value="0.2484375" />
+        <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten/app/src/main/res/drawable/shadow.xml" value="0.1574074074074074" />
+        <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten/app/src/main/res/layout/activity_main.xml" value="0.22509057971014493" />
+        <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten/app/src/main/res/layout/back_dialog.xml" value="0.22509057971014493" />
+        <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten/app/src/main/res/layout/course_card.xml" value="0.2296195652173913" />
+        <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten/app/src/main/res/layout/fragment_home.xml" value="0.2296195652173913" />
+        <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten/app/src/main/res/layout/fragment_leaderboard.xml" value="0.4" />
+        <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten/app/src/main/res/layout/fragment_lesson.xml" value="0.2296195652173913" />
+        <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten/app/src/main/res/layout/fragment_login.xml" value="0.2296195652173913" />
+        <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten/app/src/main/res/layout/fragment_profile.xml" value="0.2296195652173913" />
+        <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten/app/src/main/res/layout/fragment_question.xml" value="0.2296195652173913" />
+        <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten/app/src/main/res/layout/fragment_register.xml" value="0.2296195652173913" />
+        <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten/app/src/main/res/layout/fragment_start_quiz.xml" value="0.2296195652173913" />
+        <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten/app/src/main/res/layout/fragment_sublesson.xml" value="0.2296195652173913" />
+        <entry key="..\:/Users/Darryl/AndroidStudioProjects/chemten/app/src/main/res/layout/leaderboard_card.xml" value="0.264" />
         <entry key="..\:/Users/maxim/Documents/Semester3/MobileApps/UAS/chemten/app/src/main/res/drawable/answerbg.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/maxim/Documents/Semester3/MobileApps/UAS/chemten/app/src/main/res/drawable/dividerbg.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/maxim/Documents/Semester3/MobileApps/UAS/chemten/app/src/main/res/drawable/levelbg.xml" value="0.25416666666666665" />

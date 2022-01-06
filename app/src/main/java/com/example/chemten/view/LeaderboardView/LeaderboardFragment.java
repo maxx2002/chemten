@@ -3,12 +3,21 @@ package com.example.chemten.view.LeaderboardView;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.OvershootInterpolator;
 
 import com.example.chemten.R;
+import com.example.chemten.adapter.LeaderboardAdapter;
+import com.example.chemten.helper.ItemClickSupport;
+import com.example.chemten.model.Users;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,10 +66,28 @@ public class LeaderboardFragment extends Fragment {
         }
     }
 
+    private RecyclerView RecyclervView;
+    private LeaderboardViewModel leaderboardViewModel;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_leaderboard, container, false);
+        View view = inflater.inflate(R.layout.fragment_leaderboard, container, false);
+        RecyclervView = view.findViewById(R.id.rv_leaderboard);
+        leaderboardViewModel = new ViewModelProvider(getActivity()).get(LeaderboardViewModel.class);
+        leaderboardViewModel.getUser_id();
+        leaderboardViewModel.GetResultGetUser_id().observe(getActivity(), showLeaderboard);
+
+        return view;
     }
+
+    private Observer<Users> showLeaderboard = new Observer<Users>() {
+        @Override
+        public void onChanged(Users users) {
+            RecyclervView.setLayoutManager(new LinearLayoutManager(getActivity()));
+            LeaderboardAdapter adapter = new LeaderboardAdapter(getActivity());
+            adapter.setListUser(users.getLeaderboard());
+            }
+    };
 }
