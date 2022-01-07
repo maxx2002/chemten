@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_homeFragment_to_lessonFragment"
             app:destination="@id/lessonFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_leaderboardFragment"
+            app:destination="@id/leaderboardFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -80,4 +83,9 @@
         android:name="com.example.chemten.view.QuizView.QuestionView.QuestionFragment"
         android:label="fragment_question"
         tools:layout="@layout/fragment_question" />
+    <fragment
+        android:id="@+id/leaderboardFragment"
+        android:name="com.example.chemten.view.LeaderboardView.LeaderboardFragment"
+        android:label="fragment_leaderboard"
+        tools:layout="@layout/fragment_leaderboard" />
 </navigation>

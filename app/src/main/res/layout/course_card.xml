@@ -55,7 +55,7 @@
                 app:layout_constraintStart_toEndOf="@+id/imageView12"
                 app:layout_constraintTop_toTopOf="@+id/imageView12" />
 
-            <TextView
+            <org.sufficientlysecure.htmltextview.HtmlTextView
                 android:id="@+id/text_topic_cv_lesson"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

@@ -62,7 +62,7 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView24" />
 
-        <TextView
+        <org.sufficientlysecure.htmltextview.HtmlTextView
             android:id="@+id/text_soal_question_fragment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

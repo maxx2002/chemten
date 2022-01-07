@@ -18,6 +18,9 @@ import java.util.List;
 
 import com.example.chemten.model.Lessons;
 
+import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter;
+import org.sufficientlysecure.htmltextview.HtmlTextView;
+
 public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.CardViewViewHolder> {
     private Context context;
     private List<Lessons.Sublesson> lessonsList;
@@ -42,7 +45,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.CardViewVi
     @Override
     public void onBindViewHolder(@NonNull LessonAdapter.CardViewViewHolder holder, int position) {
         final Lessons.Sublesson results = getSublessonsList().get(position);
-        holder.lesson_topic.setText(results.getSublesson_description());
+        holder.lesson_topic.setHtml(results.getSublesson_description(), new HtmlHttpImageGetter(holder.lesson_topic));
         holder.lesson_level.setText(results.getSublesson_topic());
         holder.cardView.setOnClickListener(view -> {
             Bundle bundle = new Bundle();
@@ -60,7 +63,8 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.CardViewVi
     }
 
     public class CardViewViewHolder extends RecyclerView.ViewHolder {
-        TextView lesson_topic, lesson_level;
+        HtmlTextView lesson_topic;
+        TextView lesson_level;
         CardView cardView;
         public CardViewViewHolder(@NonNull View itemView) {
             super(itemView);

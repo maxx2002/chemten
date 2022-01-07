@@ -22,13 +22,17 @@ import com.example.chemten.R;
 import com.example.chemten.helper.Const;
 import com.squareup.picasso.Picasso;
 
+import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter;
+import org.sufficientlysecure.htmltextview.HtmlTextView;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link SublessonFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class SublessonFragment extends Fragment {
-    private TextView sublesson_topic, sublesson_desc;
+    private TextView sublesson_topic;
+    private HtmlTextView sublesson_desc;
     ImageView img_test, btn_back;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -81,13 +85,13 @@ public class SublessonFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        sublesson_topic = view.findViewById(R.id.text_sublesson_topic_sublesson_fragment);
         sublesson_desc = view.findViewById(R.id.text_sublesson_desc_sublesson_fragment);
+        sublesson_desc.setHtml(getArguments().getString("sublesson_desc"), new HtmlHttpImageGetter(sublesson_desc));
+        sublesson_topic = view.findViewById(R.id.text_sublesson_topic_sublesson_fragment);
         img_test = view.findViewById(R.id.img_sublesson_fragment);
         btn_back = view.findViewById(R.id.btn_back_sublesson_fragment);
         Picasso.get().load(Const.BASE_URL + "image/"+getArguments().getString("sublesson_image")).resize(1000, 0).into(img_test);
         sublesson_topic.setText(getArguments().getString("sublesson_topic"));
-        sublesson_desc.setText(getArguments().getString("sublesson_desc"));
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override

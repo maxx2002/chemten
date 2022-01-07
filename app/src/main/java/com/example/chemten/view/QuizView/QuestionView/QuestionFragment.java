@@ -26,6 +26,9 @@ import com.example.chemten.model.Exercises;
 import com.example.chemten.view.Dialog.BackDialog;
 import com.example.chemten.view.QuizView.StartQuizViewModel;
 
+import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter;
+import org.sufficientlysecure.htmltextview.HtmlTextView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +38,8 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class QuestionFragment extends Fragment {
-    TextView text_choice1, text_choice2, text_choice3, text_choice4, text_soal, text_totalpertanyaan;
+    HtmlTextView question_soal;
+    TextView text_choice1, text_choice2, text_choice3, text_choice4, text_totalpertanyaan;
     CardView btn_choice1, btn_choice2, btn_choice3, btn_choice4;
     List<Exercises.Question> questionList = new ArrayList<>();
     ImageView btn_back;
@@ -97,7 +101,7 @@ public class QuestionFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        text_soal = view.findViewById(R.id.text_soal_question_fragment);
+        question_soal = view.findViewById(R.id.text_soal_question_fragment);
         text_totalpertanyaan = view.findViewById(R.id.text_totalpertanyaan_question_fragment);
         text_choice1 = view.findViewById(R.id.text_choice1_question_fragment);
         text_choice2 = view.findViewById(R.id.text_choice2_question_fragment);
@@ -179,7 +183,7 @@ public class QuestionFragment extends Fragment {
     };
 
     private void inisialisasiSoal(){
-        text_soal.setText(questionList.get(currentquestion).getQuestion_description());
+        question_soal.setHtml(questionList.get(currentquestion).getQuestion_description(), new HtmlHttpImageGetter(question_soal));
         text_totalpertanyaan.setText("Pertanyaan "+(currentquestion+1)+" dari "+questionList.size());
         text_choice1.setText(questionList.get(currentquestion).getQchoice1());
         text_choice2.setText(questionList.get(currentquestion).getQchoice2());
@@ -188,7 +192,7 @@ public class QuestionFragment extends Fragment {
     }
 
     private void munculkanscore(){
-        text_soal.setText(String.valueOf(score));
+        question_soal.setHtml(String.valueOf(score), new HtmlHttpImageGetter(question_soal));
         text_totalpertanyaan.setText("Congratulations");
         btn_choice1.setVisibility(View.INVISIBLE);
         btn_choice2.setVisibility(View.INVISIBLE);

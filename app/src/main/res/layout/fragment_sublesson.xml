@@ -64,7 +64,7 @@ tools:context=".view.LessonView.SublessonView.SublessonFragment">
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_sublesson_topic_sublesson_fragment" />
 
-        <TextView
+        <org.sufficientlysecure.htmltextview.HtmlTextView
             android:id="@+id/text_sublesson_desc_sublesson_fragment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
