@@ -11,9 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.chemten.R;
+import com.example.chemten.helper.SharedPreferenceHelper;
+import com.example.chemten.model.Lessons;
 import com.example.chemten.model.Users;
+import com.example.chemten.view.HomeView.HomeAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,28 +69,47 @@ public class LeaderboardFragment extends Fragment {
         }
     }
 
-    private RecyclerView RecyclervView;
+    private RecyclerView RecyclerView;
     private LeaderboardViewModel leaderboardViewModel;
+    private LeaderboardAdapter leaderboardAdapter;
+    private SharedPreferenceHelper helper;
+    ImageView btn_back;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_leaderboard, container, false);
-        RecyclervView = view.findViewById(R.id.rv_leaderboard);
+        btn_back = view.findViewById(R.id.btn_back_lb);
+        RecyclerView = view.findViewById(R.id.rv_leaderboard);
+        helper = SharedPreferenceHelper.getInstance(requireActivity());
         leaderboardViewModel = new ViewModelProvider(getActivity()).get(LeaderboardViewModel.class);
+        leaderboardViewModel.init(helper.getAccessToken());
         leaderboardViewModel.getUser();
         leaderboardViewModel.GetResultGetUser_id().observe(getActivity(), showLeaderboard);
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+            }
+        });
 
         return view;
     }
 
+    List<Users.Leaderboard> results = new ArrayList<>();
+    LinearLayoutManager linearLayoutManager;
+
     private Observer<Users> showLeaderboard = new Observer<Users>() {
         @Override
         public void onChanged(Users users) {
-            RecyclervView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            LeaderboardAdapter adapter = new LeaderboardAdapter(getActivity());
-            adapter.setListUser(users.getLeaderboard());
+            results = users.getLeaderboard();
+            linearLayoutManager = new LinearLayoutManager(getActivity());
+            RecyclerView.setLayoutManager(linearLayoutManager);
+            leaderboardAdapter = new LeaderboardAdapter(getActivity());
+            leaderboardAdapter.setListUser(results);
+            RecyclerView.setAdapter(leaderboardAdapter);
             }
     };
 }

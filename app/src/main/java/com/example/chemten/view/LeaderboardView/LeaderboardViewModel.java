@@ -13,7 +13,7 @@ import com.example.chemten.repositories.HomeRepository;
 import com.example.chemten.repositories.UserRepository;
 
 public class LeaderboardViewModel extends AndroidViewModel {
-    private UserRepository repository;
+    private UserRepository userRepository;
     private static final String TAG = "LeaderboardViewModel";
 
     public LeaderboardViewModel(@NonNull Application application) {
@@ -22,13 +22,13 @@ public class LeaderboardViewModel extends AndroidViewModel {
 
     public void init(String token) {
         Log.d(TAG, "init: "+token);
-        repository = UserRepository.getInstance(token);
+        userRepository = UserRepository.getInstance(token);
     }
 
     //==Begin of viewmodel get user by id
     private MutableLiveData<Users> resultGetUser_id = new MutableLiveData<>();
     public void getUser() {
-        resultGetUser_id = repository.getUser();
+        resultGetUser_id = userRepository.getUser();
     }
     public LiveData<Users> GetResultGetUser_id(){
         return resultGetUser_id;
@@ -39,7 +39,7 @@ public class LeaderboardViewModel extends AndroidViewModel {
     protected void onCleared() {
         super.onCleared();
         Log.d(TAG, "onCleared: ");
-        repository.resetInstance();
+        userRepository.resetInstance();
     }
 }
 

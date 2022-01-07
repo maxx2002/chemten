@@ -44,7 +44,7 @@ public class UserRepository {
                 Log.d(TAG, "onResponse: "+response.code());
                 if (response.isSuccessful()){
                     if (response.body() != null) {
-                        Log.d(TAG, "onResponse" + response.body().getLeaderboard().size());
+                        Log.d(TAG, "onResponse" + response.body());
                         listUser.postValue(response.body());
                     }
                 }

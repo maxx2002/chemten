@@ -40,9 +40,9 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
     @Override
     public void onBindViewHolder(@NonNull CardViewViewHolder holder, int position) {
         final Users.Leaderboard results = getListUser().get(position);
-        holder.no.setText(results.getId());
-        holder.nama.setText(results.getUser_id());
-        holder.skor.setText(results.getRank_score());
+        holder.no.setText(String.valueOf(results.getId()));
+        holder.nama.setText(String.valueOf(results.getUser_id()));
+        holder.skor.setText(String.valueOf(results.getRank_score()));
     }
 
     @Override
