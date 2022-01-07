@@ -16,12 +16,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.chemten.R;
 import com.example.chemten.helper.SharedPreferenceHelper;
 import com.example.chemten.model.Lessons;
 import com.example.chemten.retrofit.RetrofitService;
+import com.example.chemten.view.LeaderboardView.LeaderboardFragment;
+import com.example.chemten.view.LoginView.LoginFragmentDirections;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +37,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     ImageView home_image_profile;
+    TextView leaderboard;
 
     private HomeViewModel homeViewModel;
     private HomeAdapter homeAdapter;
@@ -94,6 +98,12 @@ public class HomeFragment extends Fragment {
         home_image_profile.setOnClickListener(view1 -> {
             NavDirections action = HomeFragmentDirections.actionHomeFragmentToProfileFragment();
             Navigation.findNavController(view1).navigate(action);
+        });
+
+        leaderboard = view.findViewById(R.id.leaderboard);
+        leaderboard.setOnClickListener(view2 -> {
+            NavDirections action = HomeFragmentDirections.actionHomeFragmentToLeaderboardFragment();
+            Navigation.findNavController(view2).navigate(action);
         });
 
         recyclerView = view.findViewById(R.id.rv_lesson_home_fragment);

@@ -72,7 +72,7 @@ public class LeaderboardFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_leaderboard, container, false);
         RecyclervView = view.findViewById(R.id.rv_leaderboard);
         leaderboardViewModel = new ViewModelProvider(getActivity()).get(LeaderboardViewModel.class);
-        leaderboardViewModel.getUser_id();
+        leaderboardViewModel.getUser();
         leaderboardViewModel.GetResultGetUser_id().observe(getActivity(), showLeaderboard);
 
         return view;
