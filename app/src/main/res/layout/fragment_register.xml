@@ -107,7 +107,7 @@
                         android:layout_marginBottom="8dp"
                         android:ems="10"
                         android:hint="Password"
-                        android:inputType="textPersonName"
+                        android:inputType="textPersonName|textPassword"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/email_input_register_fragment"
                         app:layout_constraintStart_toStartOf="@+id/email_input_register_fragment"

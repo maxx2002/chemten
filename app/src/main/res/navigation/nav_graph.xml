@@ -3,7 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment2">
+    app:startDestination="@id/splashScreenFragment2">
+    <fragment
+        android:id="@+id/splashScreenFragment2"
+        android:name="com.example.chemten.view.SplashView.SplashScreenFragment"
+        android:label="fragment_splash2">
+        <action
+            android:id="@+id/action_splashScreenFragment2_to_loginFragment2"
+            app:destination="@id/loginFragment2" />
+        <action
+            android:id="@+id/action_splashScreenFragment2_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment2"
         android:name="com.example.chemten.view.LoginView.LoginFragment"
@@ -88,4 +99,5 @@
         android:name="com.example.chemten.view.LeaderboardView.LeaderboardFragment"
         android:label="fragment_leaderboard"
         tools:layout="@layout/fragment_leaderboard" />
+
 </navigation>
