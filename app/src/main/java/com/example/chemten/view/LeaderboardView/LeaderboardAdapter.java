@@ -1,4 +1,4 @@
-package com.example.chemten.adapter;
+package com.example.chemten.view.LeaderboardView;
 
 import android.content.Context;
 import android.view.LayoutInflater;

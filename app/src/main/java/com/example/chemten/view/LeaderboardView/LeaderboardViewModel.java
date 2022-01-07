@@ -1,6 +1,7 @@
 package com.example.chemten.view.LeaderboardView;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -8,15 +9,20 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.chemten.model.Users;
+import com.example.chemten.repositories.HomeRepository;
 import com.example.chemten.repositories.UserRepository;
 
 public class LeaderboardViewModel extends AndroidViewModel {
 
     private UserRepository repository;
+    private static final String TAG = "LeaderboardViewModel";
 
     public LeaderboardViewModel(@NonNull Application application) {
         super(application);
-        repository = UserRepository.getInstance();
+    }
+    public void init(String token) {
+        Log.d(TAG, "init: "+token);
+        repository = UserRepository.getInstance(token);
     }
 
     //==Begin of viewmodel get user by id
