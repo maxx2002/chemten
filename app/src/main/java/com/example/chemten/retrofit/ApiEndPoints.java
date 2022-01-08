@@ -1,5 +1,6 @@
 package com.example.chemten.retrofit;
 
+import com.example.chemten.model.DataUser;
 import com.example.chemten.model.Exercises;
 import com.example.chemten.model.Lessons;
 import com.example.chemten.model.RegisterResponse;
@@ -35,9 +36,12 @@ public interface ApiEndPoints {
     @GET("exercise/{exercise}")
     Call<Exercises> getExerciseDetail(@Path("exercise") int code);
 
-    @GET("image")
-    Call<JsonObject> getImage();
-
     @GET("leaderboard")
     Call<Users> getUser();
+
+    @GET("leaderboard/{leaderboard}")
+    Call<Users> getUserDetail(@Path("leaderboard") int code);
+
+    @GET("users/{email}")
+    Call<DataUser> getDataUser(@Path("email") String email);
 }

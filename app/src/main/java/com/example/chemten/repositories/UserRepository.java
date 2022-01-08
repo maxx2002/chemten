@@ -59,6 +59,29 @@ public class UserRepository {
         return listUser;
     }
 
+    public MutableLiveData<Users> getUserDetail(int code) {
+        final MutableLiveData<Users> listUserDetail = new MutableLiveData<>();
+
+        apiService.getUserDetails(code).enqueue(new Callback<Users>() {
+            @Override
+            public void onResponse(Call<Users> call, Response<Users> response) {
+                Log.d(TAG, "onResponse: "+response.code());
+                if (response.isSuccessful()){
+                    if (response.body() != null) {
+                        Log.d(TAG, "onResponse" + response.body());
+                        listUserDetail.postValue(response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Users> call, Throwable t) {
+                Log.e(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+        return listUserDetail;
+    }
 }
 
 

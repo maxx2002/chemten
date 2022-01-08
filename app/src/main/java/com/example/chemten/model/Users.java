@@ -51,7 +51,8 @@ public class Users implements Parcelable {
     public static class Leaderboard {
         private int id;
         private int user_id;
-        private String rank_score;
+        private int rank_score;
+        private String name;
 
         public static Leaderboard objectFromData(String str) {
 
@@ -74,12 +75,20 @@ public class Users implements Parcelable {
             this.user_id = user_id;
         }
 
-        public String getRank_score() {
+        public int getRank_score() {
             return rank_score;
         }
 
-        public void setRank_score(String rank_score) {
+        public void setRank_score(int rank_score) {
             this.rank_score = rank_score;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
         }
     }
 }

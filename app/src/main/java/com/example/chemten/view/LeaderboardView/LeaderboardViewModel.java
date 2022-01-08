@@ -35,6 +35,14 @@ public class LeaderboardViewModel extends AndroidViewModel {
     }
     //==End of viewmodel get user by id
 
+    private MutableLiveData<Users> resultGetUserDetail = new MutableLiveData<>();
+    public void getUserDetail(int code) {
+        resultGetUserDetail = userRepository.getUserDetail(code);
+    }
+    public LiveData<Users> GetResultGetUserDetail(){
+        return resultGetUserDetail;
+    }
+
     @Override
     protected void onCleared() {
         super.onCleared();

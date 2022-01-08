@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/drawable/answerbg.xml" value="0.1814814814814815" />
+        <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/drawable/radiobutton_selector.xml" value="0.1814814814814815" />
+        <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/drawable/radiobutton_white.xml" value="0.1814814814814815" />
+        <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/drawable/radiobuttontext_selector.xml" value="0.1814814814814815" />
         <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/activity_main.xml" value="0.13148148148148148" />
         <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/back_dialog.xml" value="0.25" />
         <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/course_card.xml" value="0.33" />
@@ -11,7 +15,8 @@
         <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_leaderboard.xml" value="0.13148148148148148" />
         <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_lesson.xml" value="0.25" />
         <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_login.xml" value="0.25" />
-        <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_question.xml" value="0.18" />
+        <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
+        <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_question.xml" value="0.25" />
         <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_register.xml" value="0.2" />
         <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_start_quiz.xml" value="0.25" />
         <entry key="..\:/Kuliah/Semester 3/Mobile Apps Development/UAS/chemten/app/src/main/res/layout/fragment_sublesson.xml" value="0.2" />

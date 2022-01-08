@@ -76,135 +76,137 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_totalpertanyaan_question_fragment" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/btn_choice1_question_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+        <RadioGroup
+            android:id="@+id/radioGroup_question_fragment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="64dp"
-            android:background="@drawable/levelbg"
-            app:cardBackgroundColor="@color/bluebg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_soal_question_fragment">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <RadioButton
+                android:id="@+id/radioButton_choice1_question_fragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/answerbg">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/radiobutton_selector"
+                android:button="@android:color/transparent"
+                android:elevation="4dp"
+                android:text="RadioButton"
+                android:textAlignment="center"
+                android:textColor="@drawable/radiobuttontext_selector"
+                android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/text_choice1_question_fragment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pilihan 1"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/btn_choice2_question_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="64dp"
-            android:background="@drawable/levelbg"
-            app:cardBackgroundColor="@color/bluebg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_choice1_question_fragment">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <RadioButton
+                android:id="@+id/radioButton_choice2_question_fragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/answerbg">
+                android:layout_height="wrap_content"
+                android:background="@drawable/radiobutton_selector"
+                android:button="@android:color/transparent"
+                android:elevation="4dp"
+                android:text="RadioButton"
+                android:textAlignment="center"
+                android:textColor="@drawable/radiobuttontext_selector"
+                android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/text_choice2_question_fragment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pilihan 2"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/btn_choice3_question_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="64dp"
-            android:background="@drawable/levelbg"
-            app:cardBackgroundColor="@color/bluebg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_choice2_question_fragment">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <RadioButton
+                android:id="@+id/radioButton_choice3_question_fragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/answerbg">
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="15dp"
+                android:background="@drawable/radiobutton_selector"
+                android:button="@android:color/transparent"
+                android:elevation="4dp"
+                android:text="RadioButton"
+                android:textAlignment="center"
+                android:textColor="@drawable/radiobuttontext_selector"
+                android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/text_choice3_question_fragment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pilihan 3"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+            <RadioButton
+                android:id="@+id/radioButton_choice4_question_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radiobutton_selector"
+                android:button="@android:color/transparent"
+                android:elevation="4dp"
+                android:text="RadioButton"
+                android:textAlignment="center"
+                android:textColor="@drawable/radiobuttontext_selector"
+                android:textSize="20sp" />
+        </RadioGroup>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/btn_choice4_question_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="64dp"
+        <TextView
+            android:id="@+id/btn_next_question_fragment"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
-            android:background="@drawable/levelbg"
-            app:cardBackgroundColor="@color/bluebg"
+            android:background="@drawable/answerbg"
+            android:text="Next -&gt;"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup_question_fragment" />
+
+        <TextView
+            android:id="@+id/btn_prev_question_fragment"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/answerbg"
+            android:text="&lt;- Previous"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_choice3_question_fragment">
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup_question_fragment" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/answerbg">
+        <TextView
+            android:id="@+id/text_congratulations_question_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Congratulations"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/imageView24"
+            app:layout_constraintStart_toStartOf="@+id/imageView24"
+            app:layout_constraintTop_toTopOf="@+id/text_totalpertanyaan_question_fragment" />
 
-                <TextView
-                    android:id="@+id/text_choice4_question_fragment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pilihan 4"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/text_poin_question_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="20"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/text_congratulations_question_fragment"
+            app:layout_constraintStart_toStartOf="@+id/text_congratulations_question_fragment"
+            app:layout_constraintTop_toBottomOf="@+id/text_congratulations_question_fragment" />
+
+        <TextView
+            android:id="@+id/btn_finish_question_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/answerbg"
+            android:text="Finish"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/text_poin_question_fragment"
+            app:layout_constraintStart_toStartOf="@+id/text_poin_question_fragment"
+            app:layout_constraintTop_toBottomOf="@+id/text_poin_question_fragment" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

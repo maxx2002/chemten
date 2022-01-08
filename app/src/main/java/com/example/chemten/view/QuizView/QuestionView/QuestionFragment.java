@@ -18,6 +18,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.chemten.R;
@@ -39,10 +41,12 @@ import java.util.List;
  */
 public class QuestionFragment extends Fragment {
     HtmlTextView question_soal;
-    TextView text_choice1, text_choice2, text_choice3, text_choice4, text_totalpertanyaan;
-    CardView btn_choice1, btn_choice2, btn_choice3, btn_choice4;
+    TextView btn_next, btn_prev, text_totalpertanyaan, text_congratulations, text_poin, btn_finish;
     List<Exercises.Question> questionList = new ArrayList<>();
     ImageView btn_back;
+    RadioButton choice1, choice2, choice3, choice4;
+    Object[] arrayjawaban;
+    RadioGroup radioGroup;
 
     private int currentquestion = 0;
     private int score = 0;
@@ -103,15 +107,17 @@ public class QuestionFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         question_soal = view.findViewById(R.id.text_soal_question_fragment);
         text_totalpertanyaan = view.findViewById(R.id.text_totalpertanyaan_question_fragment);
-        text_choice1 = view.findViewById(R.id.text_choice1_question_fragment);
-        text_choice2 = view.findViewById(R.id.text_choice2_question_fragment);
-        text_choice3 = view.findViewById(R.id.text_choice3_question_fragment);
-        text_choice4 = view.findViewById(R.id.text_choice4_question_fragment);
-        btn_choice1 = view.findViewById(R.id.btn_choice1_question_fragment);
-        btn_choice2 = view.findViewById(R.id.btn_choice2_question_fragment);
-        btn_choice3 = view.findViewById(R.id.btn_choice3_question_fragment);
-        btn_choice4 = view.findViewById(R.id.btn_choice4_question_fragment);
+        choice1 = view.findViewById(R.id.radioButton_choice1_question_fragment);
+        choice2 = view.findViewById(R.id.radioButton_choice2_question_fragment);
+        choice3 = view.findViewById(R.id.radioButton_choice3_question_fragment);
+        choice4 = view.findViewById(R.id.radioButton_choice4_question_fragment);
         btn_back = view.findViewById(R.id.btn_back_question_fragment);
+        btn_next = view.findViewById(R.id.btn_next_question_fragment);
+        btn_prev = view.findViewById(R.id.btn_prev_question_fragment);
+        radioGroup = view.findViewById(R.id.radioGroup_question_fragment);
+        text_congratulations = view.findViewById(R.id.text_congratulations_question_fragment);
+        text_poin = view.findViewById(R.id.text_poin_question_fragment);
+        btn_finish = view.findViewById(R.id.btn_finish_question_fragment);
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         startQuizViewModel = new ViewModelProvider(getActivity()).get(StartQuizViewModel.class);
@@ -119,11 +125,8 @@ public class QuestionFragment extends Fragment {
         startQuizViewModel.getExerciseDetail(getArguments().getInt("exercise_id"));
         startQuizViewModel.getResultExerciseDetail().observe(getActivity(), showLessonsDetail);
 
-        btn_choice1.setOnClickListener(view1 -> {
-            if(text_choice1.getText().equals(questionList.get(currentquestion).getCorrectanswer())){
-                score += 100;
-            }
-            Log.d(TAG, "User Choose: A");
+        btn_next.setOnClickListener(view16 -> {
+            pilihjawaban();
             currentquestion++;
             if(currentquestion < questionList.size()) {
                 inisialisasiSoal();
@@ -131,53 +134,34 @@ public class QuestionFragment extends Fragment {
                 munculkanscore();
             }
         });
-        btn_choice2.setOnClickListener(view12 -> {
-            if(text_choice2.getText().equals(questionList.get(currentquestion).getCorrectanswer())){
-                score += 100;
-            }
-            Log.d(TAG, "User Choose: B");
-            currentquestion++;
+        btn_prev.setOnClickListener(view17 -> {
+            pilihjawaban();
+            currentquestion--;
             if(currentquestion < questionList.size()) {
                 inisialisasiSoal();
-            }else{
-                munculkanscore();
+            }else if(currentquestion == 0){
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                BackDialog dialog = new BackDialog();
+                dialog.show(fm, "dialog");
             }
         });
-        btn_choice3.setOnClickListener(view13 -> {
-            if(text_choice3.getText().equals(questionList.get(currentquestion).getCorrectanswer())){
-                score += 100;
-            }
-            Log.d(TAG, "User Choose: C");
-            currentquestion++;
-            if(currentquestion < questionList.size()) {
-                inisialisasiSoal();
-            }else{
-                munculkanscore();
-            }
-        });
-        btn_choice4.setOnClickListener(view14 -> {
-            if(text_choice4.getText().equals(questionList.get(currentquestion).getCorrectanswer())){
-                score += 100;
-            }
-            Log.d(TAG, "User Choose: D");
-            currentquestion++;
-            if(currentquestion < questionList.size()) {
-                inisialisasiSoal();
-            }else{
-                munculkanscore();
-            }
-        });
+
+
         btn_back.setOnClickListener(view15 -> {
             FragmentManager fm = getActivity().getSupportFragmentManager();
             BackDialog dialog = new BackDialog();
             dialog.show(fm, "dialog");
+        });
+
+        btn_finish.setOnClickListener(view1 -> {
+            getActivity().onBackPressed();
         });
     }
     private Observer<Exercises> showLessonsDetail = new Observer<Exercises>() {
         @Override
         public void onChanged(Exercises exercises) {
             questionList = exercises.getQuestion();
-
+            arrayjawaban = new Object[questionList.size()];
             inisialisasiSoal();
         }
     };
@@ -185,19 +169,59 @@ public class QuestionFragment extends Fragment {
     private void inisialisasiSoal(){
         question_soal.setHtml(questionList.get(currentquestion).getQuestion_description(), new HtmlHttpImageGetter(question_soal));
         text_totalpertanyaan.setText("Pertanyaan "+(currentquestion+1)+" dari "+questionList.size());
-        text_choice1.setText(questionList.get(currentquestion).getQchoice1());
-        text_choice2.setText(questionList.get(currentquestion).getQchoice2());
-        text_choice3.setText(questionList.get(currentquestion).getQchoice3());
-        text_choice4.setText(questionList.get(currentquestion).getQchoice4());
+        choice1.setText(questionList.get(currentquestion).getQchoice1());
+        choice2.setText(questionList.get(currentquestion).getQchoice2());
+        choice3.setText(questionList.get(currentquestion).getQchoice3());
+        choice4.setText(questionList.get(currentquestion).getQchoice4());
+        if(arrayjawaban[currentquestion] != null){
+            if(arrayjawaban[currentquestion].equals(questionList.get(currentquestion).getQchoice1())){
+                choice1.setChecked(true);
+            }else if(arrayjawaban[currentquestion].equals(questionList.get(currentquestion).getQchoice2())){
+                choice2.setChecked(true);
+            }else if(arrayjawaban[currentquestion].equals(questionList.get(currentquestion).getQchoice3())){
+                choice3.setChecked(true);
+            }else if(arrayjawaban[currentquestion].equals(questionList.get(currentquestion).getQchoice4())){
+                choice4.setChecked(true);
+            }
+        }
     }
 
     private void munculkanscore(){
-        question_soal.setHtml(String.valueOf(score), new HtmlHttpImageGetter(question_soal));
-        text_totalpertanyaan.setText("Congratulations");
-        btn_choice1.setVisibility(View.INVISIBLE);
-        btn_choice2.setVisibility(View.INVISIBLE);
-        btn_choice3.setVisibility(View.INVISIBLE);
-        btn_choice4.setVisibility(View.INVISIBLE);
+        checkscore();
+        question_soal.setVisibility(View.GONE);;
+        text_totalpertanyaan.setVisibility(View.GONE);
+        radioGroup.setVisibility(View.GONE);
+        btn_next.setVisibility(View.GONE);
+        btn_prev.setVisibility(View.GONE);
+        text_congratulations.setVisibility(View.VISIBLE);
+        text_poin.setVisibility(View.VISIBLE);
+        btn_finish.setVisibility(View.VISIBLE);
+
+    }
+    private void pilihjawaban(){
+        if(choice1.isChecked()){
+            Log.d(TAG, "User Choose: A");
+            arrayjawaban[currentquestion] = questionList.get(currentquestion).getQchoice1();
+        }else if(choice2.isChecked()){
+            Log.d(TAG, "User Choose: B");
+            arrayjawaban[currentquestion] = questionList.get(currentquestion).getQchoice2();
+        }else if(choice3.isChecked()){
+            Log.d(TAG, "User Choose: C");
+            arrayjawaban[currentquestion] = questionList.get(currentquestion).getQchoice3();
+        }else if(choice4.isChecked()){
+            Log.d(TAG, "User Choose: D");
+            arrayjawaban[currentquestion] = questionList.get(currentquestion).getQchoice4();
+        }
+        radioGroup.clearCheck();
+    }
+    private void checkscore(){
+        for(int i = 0; i<questionList.size(); i++){
+            if(arrayjawaban[i] != null) {
+                if (arrayjawaban[i].equals(questionList.get(i).getCorrectanswer())) {
+                    score += 10;
+                }
+            }
+        }
     }
 
     @Override

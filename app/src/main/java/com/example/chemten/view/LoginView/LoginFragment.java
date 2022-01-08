@@ -103,8 +103,9 @@ public class LoginFragment extends Fragment {
                 loginViewModel.login(email, pass).observe(requireActivity(), tokenResponse -> {
                     if(tokenResponse != null){
                         helper.saveAccessToken(tokenResponse.getAuthorization());
-                        NavDirections action = LoginFragmentDirections.actionLoginFragment2ToHomeFragment();
-                        Navigation.findNavController(view1).navigate(action);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("email", email);
+                        Navigation.findNavController(view1).navigate(R.id.action_loginFragment2_to_homeFragment, bundle);
                         Toast.makeText(requireActivity(), "login Success", Toast.LENGTH_SHORT).show();
                     }
                 });

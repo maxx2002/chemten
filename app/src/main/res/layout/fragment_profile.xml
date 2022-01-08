@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
-                android:text="Level 1"
+                android:text="Poin"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -76,7 +76,7 @@
                 app:layout_constraintTop_toTopOf="@+id/divider2" />
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/text_poin_profile_fragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -86,110 +86,6 @@
                 app:layout_constraintStart_toEndOf="@+id/imageView14"
                 app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-            <ImageView
-                android:id="@+id/imageView15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/progresslevel"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView14"
-                app:layout_constraintStart_toStartOf="@+id/textView13" />
-
-            <ImageView
-                android:id="@+id/imageView16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
-                android:src="@drawable/whitecircle"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider2" />
-
-            <ImageView
-                android:id="@+id/imageView18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:src="@drawable/whitecircle"
-                app:layout_constraintEnd_toStartOf="@+id/imageView17"
-                app:layout_constraintStart_toEndOf="@+id/imageView16"
-                app:layout_constraintTop_toBottomOf="@+id/divider2" />
-
-            <ImageView
-                android:id="@+id/imageView17"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="32dp"
-                android:src="@drawable/whitecircle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider2" />
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Total Lesson"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="@+id/imageView16"
-                app:layout_constraintStart_toStartOf="@+id/imageView16"
-                app:layout_constraintTop_toBottomOf="@+id/imageView16" />
-
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Completed"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="@+id/imageView18"
-                app:layout_constraintStart_toStartOf="@+id/imageView18"
-                app:layout_constraintTop_toBottomOf="@+id/imageView18" />
-
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="On Progress"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="@+id/imageView17"
-                app:layout_constraintStart_toStartOf="@+id/imageView17"
-                app:layout_constraintTop_toBottomOf="@+id/imageView17" />
-
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="5"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="@+id/textView14"
-                app:layout_constraintStart_toStartOf="@+id/textView14"
-                app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="0"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="@+id/textView15"
-                app:layout_constraintStart_toStartOf="@+id/textView15"
-                app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-            <TextView
-                android:id="@+id/textView19"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="5"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="@+id/textView16"
-                app:layout_constraintStart_toStartOf="@+id/textView16"
-                app:layout_constraintTop_toBottomOf="@+id/textView16" />
-
             <View
                 android:id="@+id/divider3"
                 android:layout_width="match_parent"
@@ -198,7 +94,7 @@
                 android:background="@drawable/dividerbg"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView18" />
+                app:layout_constraintTop_toBottomOf="@+id/view2" />
 
             <TextView
                 android:id="@+id/textView20"
@@ -212,8 +108,8 @@
 
             <ImageView
                 android:id="@+id/imageView19"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_marginTop="24dp"
                 android:src="@drawable/whitecircle"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -221,7 +117,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
             <TextView
-                android:id="@+id/textView21"
+                android:id="@+id/text_username_profile_fragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -233,7 +129,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView19" />
 
             <TextView
-                android:id="@+id/textView22"
+                android:id="@+id/text_email_profile_fragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -241,7 +137,7 @@
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+                app:layout_constraintTop_toBottomOf="@+id/text_username_profile_fragment" />
 
             <TextView
                 android:id="@+id/profile_text_logout"
@@ -253,7 +149,152 @@
                 android:text="Logout"
                 android:textColor="@color/pinkbg"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView22" />
+                app:layout_constraintTop_toBottomOf="@+id/text_email_profile_fragment" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="0dp"
+                android:layout_height="225dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/levelbg"
+                app:layout_constraintEnd_toEndOf="@+id/divider2"
+                app:layout_constraintStart_toStartOf="@+id/divider2"
+                app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:text="Badge"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/view2"
+                app:layout_constraintTop_toTopOf="@+id/view2" />
+
+            <HorizontalScrollView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintEnd_toEndOf="@+id/view2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/img_badge2_profile_fragment"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/badge2"
+                        app:layout_constraintStart_toEndOf="@+id/img_badge1_profile_fragment"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/img_badge4_profile_fragment"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/badge4"
+                        app:layout_constraintStart_toEndOf="@+id/img_badge3_profile_fragment"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/img_badge5_profile_fragment"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/badge5"
+                        app:layout_constraintStart_toEndOf="@+id/img_badge4_profile_fragment"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/img_badge1_profile_fragment"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/badge1" />
+
+                    <ImageView
+                        android:id="@+id/img_badge3_profile_fragment"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/badge3"
+                        app:layout_constraintStart_toEndOf="@+id/img_badge2_profile_fragment"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Score 100 Points"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="@+id/img_badge1_profile_fragment"
+                        app:layout_constraintStart_toStartOf="@+id/img_badge1_profile_fragment"
+                        app:layout_constraintTop_toBottomOf="@+id/img_badge1_profile_fragment" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Score 200 Points"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="@+id/img_badge2_profile_fragment"
+                        app:layout_constraintStart_toStartOf="@+id/img_badge2_profile_fragment"
+                        app:layout_constraintTop_toTopOf="@+id/textView9" />
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Score 300 Points"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="@+id/img_badge3_profile_fragment"
+                        app:layout_constraintStart_toStartOf="@+id/img_badge3_profile_fragment"
+                        app:layout_constraintTop_toTopOf="@+id/textView10" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Score 400 Points"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="@+id/img_badge4_profile_fragment"
+                        app:layout_constraintStart_toStartOf="@+id/img_badge4_profile_fragment"
+                        app:layout_constraintTop_toTopOf="@+id/textView14" />
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Score 500 Points"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="@+id/img_badge5_profile_fragment"
+                        app:layout_constraintStart_toStartOf="@+id/img_badge5_profile_fragment"
+                        app:layout_constraintTop_toTopOf="@+id/textView15" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </HorizontalScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.chemten.model.DataUser;
 import com.example.chemten.model.Lessons;
 import com.example.chemten.repositories.HomeRepository;
 
@@ -33,14 +34,12 @@ public class HomeViewModel extends AndroidViewModel {
         return resultLesson;
     }
 
-    //== Begin of view model to get detail lesson
-    private MutableLiveData<Lessons> resultLessonDetail = new MutableLiveData<>();
-    public void getLessonDetail(int code) {
-        resultLessonDetail = homeRepository.getLessonDetail(code);
+    private MutableLiveData<DataUser> resultDataUser = new MutableLiveData<>();
+    public void getDataUser(String email){
+        resultDataUser = homeRepository.getUserData(email);
     }
-    public LiveData<Lessons> getResultLessonDetail()
-    {
-        return resultLessonDetail;
+    public LiveData<DataUser> getResultDataUser(){
+        return resultDataUser;
     }
 
 

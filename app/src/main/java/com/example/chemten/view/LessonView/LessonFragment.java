@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 import com.example.chemten.R;
 import com.example.chemten.helper.SharedPreferenceHelper;
 import com.example.chemten.model.Lessons;
+import com.example.chemten.view.Dialog.BackDialog;
 
 import java.util.ArrayList;
 import java.util.List;

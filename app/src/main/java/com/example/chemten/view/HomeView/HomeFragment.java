@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.chemten.R;
 import com.example.chemten.helper.SharedPreferenceHelper;
+import com.example.chemten.model.DataUser;
 import com.example.chemten.model.Lessons;
 import com.example.chemten.retrofit.RetrofitService;
 import com.example.chemten.view.LeaderboardView.LeaderboardFragment;
@@ -37,7 +38,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     ImageView home_image_profile;
-    TextView leaderboard;
+    TextView leaderboard, welcome_name;
 
     private HomeViewModel homeViewModel;
     private HomeAdapter homeAdapter;
@@ -94,10 +95,18 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        String UserEmail = getArguments().getString("email");
         home_image_profile = view.findViewById(R.id.home_image_profile);
+        welcome_name = view.findViewById(R.id.text_name_home_fragment);
         home_image_profile.setOnClickListener(view1 -> {
-            NavDirections action = HomeFragmentDirections.actionHomeFragmentToProfileFragment();
-            Navigation.findNavController(view1).navigate(action);
+            Bundle bundle = new Bundle();
+            bundle.putString("email", UserEmail);
+            if(UserEmail != null) {
+                bundle.putInt("user_id", listDataUser.get(0).getId());
+            }else {
+                bundle.putInt("user_id", 1);
+            }
+            Navigation.findNavController(view1).navigate(R.id.action_homeFragment_to_profileFragment, bundle);
         });
 
         leaderboard = view.findViewById(R.id.leaderboard);
@@ -111,10 +120,17 @@ public class HomeFragment extends Fragment {
         homeViewModel = new ViewModelProvider(getActivity()).get(HomeViewModel.class);
         homeViewModel.init(helper.getAccessToken());
         homeViewModel.getLesson();
+        if(UserEmail != null) {
+            homeViewModel.getDataUser(UserEmail);
+        }else {
+            homeViewModel.getDataUser("user@gmail.com");
+        }
         homeViewModel.getResultLesson().observe(getActivity(), showLessons);
+        homeViewModel.getResultDataUser().observe(getActivity(), showDataUser);
     }
 
     List<Lessons.Lesson> results = new ArrayList<>();
+    List<DataUser.User> listDataUser = new ArrayList<>();
     LinearLayoutManager linearLayoutManager;
 
     private Observer<Lessons> showLessons = new Observer<Lessons>() {
@@ -126,6 +142,13 @@ public class HomeFragment extends Fragment {
             homeAdapter = new HomeAdapter(getActivity());
             homeAdapter.setLessonsList(results);
             recyclerView.setAdapter(homeAdapter);
+        }
+    };
+    private Observer<DataUser> showDataUser = new Observer<DataUser>() {
+        @Override
+        public void onChanged(DataUser dataUser) {
+            listDataUser = dataUser.getUser();
+            welcome_name.setText("Hi, "+listDataUser.get(0).getName());
         }
     };
 

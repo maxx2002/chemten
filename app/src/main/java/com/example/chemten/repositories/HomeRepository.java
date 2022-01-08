@@ -4,6 +4,7 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.chemten.model.DataUser;
 import com.example.chemten.model.Lessons;
 import com.example.chemten.retrofit.RetrofitService;
 
@@ -82,5 +83,27 @@ public class HomeRepository {
         });
 
         return listLessonDetail;
+    }
+    public MutableLiveData<DataUser> getUserData(String email){
+        final MutableLiveData<DataUser> listDataUser = new MutableLiveData<>();
+
+        apiService.getDataUser(email).enqueue(new Callback<DataUser>() {
+            @Override
+            public void onResponse(Call<DataUser> call, Response<DataUser> response) {
+                Log.d(TAG, "onResponse: "+response.code());
+                if(response.isSuccessful()){
+                    if(response.body() != null){
+                        Log.d(TAG, "onResponse: "+response.body());
+                        listDataUser.postValue(response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DataUser> call, Throwable t) {
+
+            }
+        });
+        return listDataUser;
     }
 }
