@@ -12,6 +12,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +24,10 @@ import com.example.chemten.R;
 import com.example.chemten.helper.SharedPreferenceHelper;
 import com.example.chemten.model.DataUser;
 import com.example.chemten.model.Lessons;
+import com.example.chemten.model.Users;
 import com.example.chemten.retrofit.RetrofitService;
 import com.example.chemten.view.LeaderboardView.LeaderboardFragment;
+import com.example.chemten.view.LeaderboardView.LeaderboardViewModel;
 import com.example.chemten.view.LoginView.LoginFragmentDirections;
 
 import java.util.ArrayList;
@@ -42,8 +45,10 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private HomeAdapter homeAdapter;
+    private LeaderboardViewModel leaderboardViewModel;
     private RecyclerView recyclerView;
     private SharedPreferenceHelper helper;
+    private int rank_score, lesson_level;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -123,14 +128,16 @@ public class HomeFragment extends Fragment {
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         homeViewModel = new ViewModelProvider(getActivity()).get(HomeViewModel.class);
         homeViewModel.init(helper.getAccessToken());
+        leaderboardViewModel = new ViewModelProvider(getActivity()).get(LeaderboardViewModel.class);
+        leaderboardViewModel.init(helper.getAccessToken());
         homeViewModel.getLesson();
         if(UserEmail != null) {
             homeViewModel.getDataUser(UserEmail);
         }else {
             homeViewModel.getDataUser("user@gmail.com");
         }
-        homeViewModel.getResultLesson().observe(getActivity(), showLessons);
-        homeViewModel.getResultDataUser().observe(getActivity(), showDataUser);
+        leaderboardViewModel.getUserDetail(getArguments().getInt("user_id"));
+        leaderboardViewModel.GetResultGetUserDetail().observe(getActivity(), showPoinUser);
     }
 
     List<Lessons.Lesson> results = new ArrayList<>();
@@ -145,6 +152,7 @@ public class HomeFragment extends Fragment {
             recyclerView.setLayoutManager(linearLayoutManager);
             homeAdapter = new HomeAdapter(getActivity());
             homeAdapter.setLessonsList(results);
+            homeAdapter.setLesson_count(lesson_level);
             recyclerView.setAdapter(homeAdapter);
         }
     };
@@ -160,6 +168,28 @@ public class HomeFragment extends Fragment {
         }
     };
 
+    List<Users.Leaderboard> listLeaderboardUser = new ArrayList<>();
+    private Observer<Users> showPoinUser = new Observer<Users>() {
+        @Override
+        public void onChanged(Users users) {
+            listLeaderboardUser = users.getLeaderboard();
+            rank_score = listLeaderboardUser.get(0).getRank_score();
+            lesson_level = 1;
+            if(rank_score > 300){
+                lesson_level = 5;
+            }else if(rank_score > 225){
+                lesson_level = 4;
+            }else if(rank_score > 150){
+                lesson_level = 3;
+            }else if(rank_score > 75){
+                lesson_level = 2;
+            }
+            Log.d("HomeFragment", "Rank Score, Lesson Level: "+rank_score+ lesson_level);
+
+            homeViewModel.getResultLesson().observe(getActivity(), showLessons);
+            homeViewModel.getResultDataUser().observe(getActivity(), showDataUser);
+        }
+    };
     @Override
     public void onDetach(){
         super.onDetach();
