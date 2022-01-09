@@ -2,6 +2,7 @@ package com.example.chemten.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import com.google.gson.Gson;
 
 public class TokenResponse implements Parcelable {
@@ -35,6 +36,8 @@ public class TokenResponse implements Parcelable {
         return new Gson().fromJson(str, TokenResponse.class);
     }
 
+    public String getAuthorization(){return this.token_type+" " + this.access_token;}
+
     public String getToken_type() {
         return token_type;
     }
@@ -66,7 +69,6 @@ public class TokenResponse implements Parcelable {
     public void setRefresh_token(String refresh_token) {
         this.refresh_token = refresh_token;
     }
-    public String getAuthorization(){return this.token_type+" " + this.access_token;}
 
     @Override
     public int describeContents() {
