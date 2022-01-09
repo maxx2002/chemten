@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.chemten.R;
+import com.example.chemten.model.DataUser;
 import com.example.chemten.model.Lessons;
 
 import java.util.List;
@@ -20,6 +21,7 @@ import java.util.List;
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CardViewViewHolder>{
     private Context context;
     private List<Lessons.Lesson> lessonsList;
+    private int user_id;
 
     public HomeAdapter(Context context){
         this.context = context;
@@ -29,6 +31,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CardViewViewHo
     }
     public void setLessonsList (List<Lessons.Lesson> lessonsList){
         this.lessonsList = lessonsList;
+    }
+    public int getUserID(){
+        return user_id;
+    }
+    public void setUserID (int user_id){
+        this.user_id = user_id;
     }
 
     @NonNull
@@ -49,6 +57,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.CardViewViewHo
             bundle.putInt("lesson_id", results.getId());
             bundle.putString("lesson_topic", results.getLesson_topic());
             bundle.putString("lesson_level", results.getLesson_level());
+            bundle.putInt("user_id", user_id);
             Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_lessonFragment, bundle);
         });
     }

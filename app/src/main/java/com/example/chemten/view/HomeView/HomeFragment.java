@@ -37,7 +37,7 @@ import java.util.List;
  */
 public class HomeFragment extends Fragment {
 
-    ImageView home_image_profile;
+    ImageView home_image_profile, background, logo;
     TextView leaderboard, welcome_name;
 
     private HomeViewModel homeViewModel;
@@ -95,6 +95,10 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        background = view.findViewById(R.id.background_biru_home_fragment);
+        logo = view.findViewById(R.id.logo_home_fragment);
+        background.setVisibility(View.VISIBLE);
+        logo.setVisibility(View.VISIBLE);
         String UserEmail = getArguments().getString("email");
         home_image_profile = view.findViewById(R.id.home_image_profile);
         welcome_name = view.findViewById(R.id.text_name_home_fragment);
@@ -148,7 +152,11 @@ public class HomeFragment extends Fragment {
         @Override
         public void onChanged(DataUser dataUser) {
             listDataUser = dataUser.getUser();
+            homeAdapter = new HomeAdapter(getActivity());
+            homeAdapter.setUserID(listDataUser.get(0).getId());
             welcome_name.setText("Hi, "+listDataUser.get(0).getName());
+            background.setVisibility(View.GONE);
+            logo.setVisibility(View.GONE);
         }
     };
 

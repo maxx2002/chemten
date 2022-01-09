@@ -12,6 +12,7 @@ import androidx.navigation.NavHostController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +37,7 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class StartQuizFragment extends Fragment {
-    ImageView img_thumbnail, btn_back;
+    ImageView img_thumbnail, btn_back, logo, background;
     TextView exercise_topic, exercise_desc, exercise_level, btn_start;
 
     private StartQuizViewModel startQuizViewModel;
@@ -92,10 +93,15 @@ public class StartQuizFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        background = view.findViewById(R.id.background_biru_startquiz_fragment);
+        logo = view.findViewById(R.id.logo_startquiz_fragment);
+        background.setVisibility(View.VISIBLE);
+        logo.setVisibility(View.VISIBLE);
         exercise_topic = view.findViewById(R.id.exercise_topic_startquiz_fragment);
         exercise_level = view.findViewById(R.id.exercise_level_startquiz_fragment);
         exercise_desc = view.findViewById(R.id.exercise_desc_startquiz_fragment);
         btn_start = view.findViewById(R.id.btn_start_startquiz_fragment);
+        btn_start.setVisibility(View.INVISIBLE);
         img_thumbnail = view.findViewById(R.id.img_startquiz_fragment);
         btn_back = view.findViewById(R.id.btn_back_startquiz_fragment);
 
@@ -112,6 +118,7 @@ public class StartQuizFragment extends Fragment {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("exercise_id", exercise_id);
+                bundle.putInt("user_id", getArguments().getInt("user_id"));
                 Navigation.findNavController(view).navigate(R.id.action_startQuizFragment_to_questionFragment, bundle);
             }
         });
@@ -133,6 +140,15 @@ public class StartQuizFragment extends Fragment {
             exercise_topic.setText(exerciseList.get(0).getExercise_topic());
             exercise_level.setText(exerciseList.get(0).getExercise_level());
             exercise_desc.setText(exerciseList.get(0).getExercise_description());
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    background.setVisibility(View.GONE);
+                    logo.setVisibility(View.GONE);
+                    btn_start.setVisibility(View.VISIBLE);
+                }
+            }, 500);
         }
     };
 }

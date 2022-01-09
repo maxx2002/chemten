@@ -206,6 +206,29 @@ tools:context=".view.QuizView.QuestionView.QuestionFragment">
             app:layout_constraintEnd_toEndOf="@+id/text_poin_question_fragment"
             app:layout_constraintStart_toStartOf="@+id/text_poin_question_fragment"
             app:layout_constraintTop_toBottomOf="@+id/text_poin_question_fragment" />
+        <ImageView
+            android:id="@+id/background_biru_question_fragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/background_biru"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/logo_question_fragment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginEnd="64dp"
+            android:src="@drawable/logo"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

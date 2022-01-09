@@ -43,6 +43,10 @@ public class LeaderboardViewModel extends AndroidViewModel {
         return resultGetUserDetail;
     }
 
+    public MutableLiveData<Users.Leaderboard> updateLeaderboard(int code) {
+        return userRepository.updateLeaderboard(code);
+    }
+
     @Override
     protected void onCleared() {
         super.onCleared();

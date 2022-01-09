@@ -34,7 +34,7 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class LessonFragment extends Fragment {
-    ImageView btn_back;
+    ImageView btn_back, background, logo;
     private LessonViewModel lessonViewModel;
     private LessonAdapter lessonAdapter;
     private RecyclerView recyclerView;
@@ -90,6 +90,10 @@ public class LessonFragment extends Fragment {
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        background = view.findViewById(R.id.background_biru_lesson_fragment);
+        logo = view.findViewById(R.id.logo_lesson_fragment);
+        background.setVisibility(View.VISIBLE);
+        logo.setVisibility(View.VISIBLE);
         recyclerView = view.findViewById(R.id.rv_sublesson_lesson_fragment);
         lesson_topic = view.findViewById(R.id.text_lesson_topic_lesson_fragment);
         btn_exercise = view.findViewById(R.id.btn_exercise_lesson_fragment);
@@ -98,6 +102,7 @@ public class LessonFragment extends Fragment {
         lessonViewModel = new ViewModelProvider(getActivity()).get(LessonViewModel.class);
         lessonViewModel.init(helper.getAccessToken());
         int code = getArguments().getInt("lesson_id");
+        int user_id = getArguments().getInt("user_id");
         String lesson_topic_bundle = getArguments().getString("lesson_topic");
         lesson_topic.setText(lesson_topic_bundle);
         lessonViewModel.getLessonDetail(code);
@@ -108,6 +113,7 @@ public class LessonFragment extends Fragment {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putString("exercise_level", getArguments().getString("lesson_level"));
+                bundle.putInt("user_id", getArguments().getInt("user_id"));
                 Navigation.findNavController(view).navigate(R.id.action_lessonFragment_to_startQuizFragment, bundle);
             }
         });
@@ -130,6 +136,8 @@ public class LessonFragment extends Fragment {
             lessonAdapter = new LessonAdapter(getActivity());
             lessonAdapter.setLessonsList(results);
             recyclerView.setAdapter(lessonAdapter);
+            background.setVisibility(View.GONE);
+            logo.setVisibility(View.GONE);
         }
     };
 

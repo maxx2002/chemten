@@ -21,11 +21,14 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.chemten.R;
 import com.example.chemten.helper.SharedPreferenceHelper;
+import com.example.chemten.model.ExerciseScores;
 import com.example.chemten.model.Exercises;
 import com.example.chemten.view.Dialog.BackDialog;
+import com.example.chemten.view.LeaderboardView.LeaderboardViewModel;
 import com.example.chemten.view.QuizView.StartQuizViewModel;
 
 import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter;
@@ -43,15 +46,19 @@ public class QuestionFragment extends Fragment {
     HtmlTextView question_soal;
     TextView btn_next, btn_prev, text_totalpertanyaan, text_congratulations, text_poin, btn_finish;
     List<Exercises.Question> questionList = new ArrayList<>();
-    ImageView btn_back;
+    ImageView btn_back, logo, background;
     RadioButton choice1, choice2, choice3, choice4;
     Object[] arrayjawaban;
     RadioGroup radioGroup;
 
     private int currentquestion = 0;
     private int score = 0;
+    private int user_id;
+    private int exercise_id;
     private Exercises exercises;
     private StartQuizViewModel startQuizViewModel;
+    private LeaderboardViewModel leaderboardViewModel;
+    private QuestionViewModel questionViewModel;
     private SharedPreferenceHelper helper;
     private final static String TAG = "QuestionFragment";
 
@@ -105,6 +112,10 @@ public class QuestionFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        background = view.findViewById(R.id.background_biru_question_fragment);
+        logo = view.findViewById(R.id.logo_question_fragment);
+        background.setVisibility(View.VISIBLE);
+        logo.setVisibility(View.VISIBLE);
         question_soal = view.findViewById(R.id.text_soal_question_fragment);
         text_totalpertanyaan = view.findViewById(R.id.text_totalpertanyaan_question_fragment);
         choice1 = view.findViewById(R.id.radioButton_choice1_question_fragment);
@@ -118,12 +129,20 @@ public class QuestionFragment extends Fragment {
         text_congratulations = view.findViewById(R.id.text_congratulations_question_fragment);
         text_poin = view.findViewById(R.id.text_poin_question_fragment);
         btn_finish = view.findViewById(R.id.btn_finish_question_fragment);
+        //user_id = getArguments().getInt("user_id");
+        user_id = 1;
+        exercise_id = getArguments().getInt("exercise_id");
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         startQuizViewModel = new ViewModelProvider(getActivity()).get(StartQuizViewModel.class);
         startQuizViewModel.init(helper.getAccessToken());
-        startQuizViewModel.getExerciseDetail(getArguments().getInt("exercise_id"));
+        leaderboardViewModel = new ViewModelProvider(getActivity()).get(LeaderboardViewModel.class);
+        leaderboardViewModel.init(helper.getAccessToken());
+        questionViewModel = new ViewModelProvider(getActivity()).get(QuestionViewModel.class);
+        questionViewModel.init(helper.getAccessToken());
+        startQuizViewModel.getExerciseDetail(exercise_id);
         startQuizViewModel.getResultExerciseDetail().observe(getActivity(), showLessonsDetail);
+
 
         btn_next.setOnClickListener(view16 -> {
             pilihjawaban();
@@ -137,9 +156,9 @@ public class QuestionFragment extends Fragment {
         btn_prev.setOnClickListener(view17 -> {
             pilihjawaban();
             currentquestion--;
-            if(currentquestion < questionList.size()) {
+            if(currentquestion == 0) {
                 inisialisasiSoal();
-            }else if(currentquestion == 0){
+            }else if(currentquestion < questionList.size()){
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 BackDialog dialog = new BackDialog();
                 dialog.show(fm, "dialog");
@@ -154,7 +173,10 @@ public class QuestionFragment extends Fragment {
         });
 
         btn_finish.setOnClickListener(view1 -> {
-            getActivity().onBackPressed();
+            background.setVisibility(View.VISIBLE);
+            logo.setVisibility(View.VISIBLE);
+            questionViewModel.getExerciseScore(user_id);
+            questionViewModel.GetResultGetExerciseScore().observe(requireActivity(), showExerciseScore);
         });
     }
     private Observer<Exercises> showLessonsDetail = new Observer<Exercises>() {
@@ -163,6 +185,59 @@ public class QuestionFragment extends Fragment {
             questionList = exercises.getQuestion();
             arrayjawaban = new Object[questionList.size()];
             inisialisasiSoal();
+            background.setVisibility(View.GONE);
+            logo.setVisibility(View.GONE);
+        }
+    };
+
+    List<ExerciseScores.Exercisescore> listExerciseScore = new ArrayList<>();
+    private Observer<ExerciseScores> showExerciseScore = new Observer<ExerciseScores>() {
+        @Override
+        public void onChanged(ExerciseScores exercisescore) {
+            boolean checkexercisescore = false;
+            int exercisescore_id = 0;
+            listExerciseScore = exercisescore.getExercisescore();
+            ExerciseScores.Exercisescore Exercisescore = new ExerciseScores.Exercisescore(user_id, exercise_id, score);
+            for (int i = 0; i < listExerciseScore.size(); i++) {
+                if (listExerciseScore.get(i).getExercise_id() == exercise_id) {
+                    checkexercisescore = true;
+                    exercisescore_id = listExerciseScore.get(i).getId();
+                }
+            }
+            if(checkexercisescore == false) {
+                questionViewModel.createExerciseScore(Exercisescore).observe(requireActivity(), exercisescore1 -> {
+                    if (exercisescore1 != null){
+                        leaderboardViewModel.updateLeaderboard(user_id).observe(requireActivity(), leaderboard1 -> {
+                            if (leaderboard1 != null) {
+                                background.setVisibility(View.GONE);
+                                logo.setVisibility(View.GONE);
+                                getActivity().onBackPressed();
+                            } else {
+                                Toast.makeText(requireActivity(), "Cannot Finish", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }else{
+                        Toast.makeText(requireActivity(), "Cannot Finish", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }else{
+                questionViewModel.updateExerciseScore(exercisescore_id, Exercisescore).observe(requireActivity(), exercisescore1 -> {
+                    if (exercisescore1 != null){
+                        leaderboardViewModel.updateLeaderboard(user_id).observe(requireActivity(), leaderboard1 -> {
+                            if (leaderboard1 != null) {
+                                background.setVisibility(View.GONE);
+                                logo.setVisibility(View.GONE);
+                                getActivity().onBackPressed();
+                            } else {
+                                Toast.makeText(requireActivity(), "Cannot Finish", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }else{
+                        Toast.makeText(requireActivity(), "Cannot Finish", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+            Log.d(TAG, "userid, exerciseid, score: "+user_id+ exercise_id+ score);
         }
     };
 
@@ -188,6 +263,7 @@ public class QuestionFragment extends Fragment {
 
     private void munculkanscore(){
         checkscore();
+        text_poin.setText(String.valueOf(score));
         question_soal.setVisibility(View.GONE);;
         text_totalpertanyaan.setVisibility(View.GONE);
         radioGroup.setVisibility(View.GONE);
@@ -196,7 +272,6 @@ public class QuestionFragment extends Fragment {
         text_congratulations.setVisibility(View.VISIBLE);
         text_poin.setVisibility(View.VISIBLE);
         btn_finish.setVisibility(View.VISIBLE);
-
     }
     private void pilihjawaban(){
         if(choice1.isChecked()){

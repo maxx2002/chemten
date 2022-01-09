@@ -3,6 +3,7 @@ package com.example.chemten.retrofit;
 import com.example.chemten.helper.Const;
 
 import com.example.chemten.model.DataUser;
+import com.example.chemten.model.ExerciseScores;
 import com.example.chemten.model.Exercises;
 import com.example.chemten.model.Lessons;
 import com.example.chemten.model.Questions;
@@ -76,5 +77,9 @@ public class RetrofitService {
         return api.getUser();
     }
     public Call<Users> getUserDetails(int code){return api.getUserDetail(code);}
+    public Call<Users.Leaderboard> updateLeaderboard(int code){return api.updateLeaderboard(code);}
     public Call<DataUser> getDataUser(String email){return api.getDataUser(email);}
+    public Call<ExerciseScores> getExerciseScores(int code){return api.getExerciseScore(code);}
+    public Call<ExerciseScores.Exercisescore> createExerciseScore(ExerciseScores.Exercisescore exercisescore){return api.createExerciseScore(exercisescore);}
+    public Call<ExerciseScores.Exercisescore> updateExerciseScore(int code, ExerciseScores.Exercisescore exercisescore){return api.updateExerciseScore(code, exercisescore);}
 }

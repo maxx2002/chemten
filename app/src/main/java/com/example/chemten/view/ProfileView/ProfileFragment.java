@@ -35,7 +35,7 @@ import java.util.List;
  */
 public class ProfileFragment extends Fragment {
 
-    ImageView profile_image_back, badge1, badge2, badge3, badge4, badge5;
+    ImageView profile_image_back, badge1, badge2, badge3, badge4, badge5, background, logo;
     TextView profile_text_logout, text_point, text_username, text_email;
 
     private ProfileViewModel profileViewModel;
@@ -94,7 +94,10 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        background = view.findViewById(R.id.background_biru_profile_fragment);
+        logo = view.findViewById(R.id.logo_profile_fragment);
+        background.setVisibility(View.VISIBLE);
+        logo.setVisibility(View.VISIBLE);
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         profileViewModel = new ViewModelProvider(getActivity()).get(ProfileViewModel.class);
         profileViewModel.init(helper.getAccessToken());
@@ -176,6 +179,8 @@ public class ProfileFragment extends Fragment {
             }else if(Score < 500){
                 badge5.setImageResource(R.drawable.badge5bw);
             }
+            background.setVisibility(View.GONE);
+            logo.setVisibility(View.GONE);
         }
     };
 

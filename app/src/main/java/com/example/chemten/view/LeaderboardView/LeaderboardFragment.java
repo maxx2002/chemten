@@ -73,13 +73,17 @@ public class LeaderboardFragment extends Fragment {
     private LeaderboardViewModel leaderboardViewModel;
     private LeaderboardAdapter leaderboardAdapter;
     private SharedPreferenceHelper helper;
-    ImageView btn_back;
+    ImageView btn_back, logo, background;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_leaderboard, container, false);
+        background = view.findViewById(R.id.background_biru_leaderboard_fragment);
+        logo = view.findViewById(R.id.logo_leaderboard_fragment);
+        background.setVisibility(View.VISIBLE);
+        logo.setVisibility(View.VISIBLE);
         btn_back = view.findViewById(R.id.btn_back_lb);
         RecyclerView = view.findViewById(R.id.rv_leaderboard);
         helper = SharedPreferenceHelper.getInstance(requireActivity());
@@ -110,6 +114,8 @@ public class LeaderboardFragment extends Fragment {
             leaderboardAdapter = new LeaderboardAdapter(getActivity());
             leaderboardAdapter.setListUser(results);
             RecyclerView.setAdapter(leaderboardAdapter);
+            background.setVisibility(View.GONE);
+            logo.setVisibility(View.GONE);
             }
     };
 }

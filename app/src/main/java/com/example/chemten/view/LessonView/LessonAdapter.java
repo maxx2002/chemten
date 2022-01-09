@@ -24,6 +24,7 @@ import org.sufficientlysecure.htmltextview.HtmlTextView;
 public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.CardViewViewHolder> {
     private Context context;
     private List<Lessons.Sublesson> lessonsList;
+    private int counter = 1;
 
     public LessonAdapter(Context context){
         this.context = context;
@@ -47,6 +48,8 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.CardViewVi
         final Lessons.Sublesson results = getSublessonsList().get(position);
         holder.lesson_topic.setHtml(results.getSublesson_description(), new HtmlHttpImageGetter(holder.lesson_topic));
         holder.lesson_level.setText(results.getSublesson_topic());
+        holder.lesson_icon.setText(String.valueOf(counter));
+        counter++;
         holder.cardView.setOnClickListener(view -> {
             Bundle bundle = new Bundle();
             bundle.putInt("sublesson_id", results.getId());
@@ -64,12 +67,13 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.CardViewVi
 
     public class CardViewViewHolder extends RecyclerView.ViewHolder {
         HtmlTextView lesson_topic;
-        TextView lesson_level;
+        TextView lesson_level, lesson_icon;
         CardView cardView;
         public CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
             lesson_topic = itemView.findViewById(R.id.text_topic_cv_lesson);
             lesson_level = itemView.findViewById(R.id.text_level_cv_lesson);
+            lesson_icon = itemView.findViewById(R.id.text_icon_cv_lesson);
             cardView = itemView.findViewById(R.id.cv_layout_lesson);
         }
     }

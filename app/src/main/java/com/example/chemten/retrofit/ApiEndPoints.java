@@ -1,6 +1,7 @@
 package com.example.chemten.retrofit;
 
 import com.example.chemten.model.DataUser;
+import com.example.chemten.model.ExerciseScores;
 import com.example.chemten.model.Exercises;
 import com.example.chemten.model.Lessons;
 import com.example.chemten.model.RegisterResponse;
@@ -9,10 +10,12 @@ import com.example.chemten.model.Users;
 import com.google.gson.JsonObject;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ApiEndPoints {
@@ -44,4 +47,16 @@ public interface ApiEndPoints {
 
     @GET("users/{email}")
     Call<DataUser> getDataUser(@Path("email") String email);
+
+    @PUT("leaderboard/{leaderboard}")
+    Call<Users.Leaderboard> updateLeaderboard(@Path("leaderboard") int code);
+
+    @GET("exercisescore/{exercisescore}")
+    Call<ExerciseScores> getExerciseScore(@Path("exercisescore") int code);
+
+    @PUT("exercisescore/{exercisescore}")
+    Call<ExerciseScores.Exercisescore> updateExerciseScore(@Path("exercisescore") int code, @Body ExerciseScores.Exercisescore exercisescore);
+
+    @POST("exercisescore")
+    Call<ExerciseScores.Exercisescore> createExerciseScore(@Body ExerciseScores.Exercisescore exercisescore);
 }

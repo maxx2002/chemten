@@ -82,6 +82,28 @@ public class UserRepository {
 
         return listUserDetail;
     }
+    public MutableLiveData<Users.Leaderboard> updateLeaderboard(int code){
+        final MutableLiveData<Users.Leaderboard> listUpdateLeaderboard = new MutableLiveData<>();
+        apiService.updateLeaderboard(code).enqueue(new Callback<Users.Leaderboard>() {
+            @Override
+            public void onResponse(Call<Users.Leaderboard> call, Response<Users.Leaderboard> response) {
+                Log.d(TAG, "onResponse: " + response.code());
+                if (response.isSuccessful()){
+                    if (response.body() != null) {
+                        Log.d(TAG, "onResponse" + response.body());
+                        listUpdateLeaderboard.postValue(response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Users.Leaderboard> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+        return listUpdateLeaderboard;
+    }
 }
 
 
