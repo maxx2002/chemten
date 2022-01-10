@@ -133,6 +133,7 @@ public class ProfileFragment extends Fragment {
             profileViewModel.logout().observe(requireActivity(), s -> {
                 if(!s.isEmpty()){
                     helper.clearPref();
+                    profileViewModel.onCleared();
                     NavDirections action = ProfileFragmentDirections.actionProfileFragmentToLoginFragment2();
                     Navigation.findNavController(view1).navigate(action);
                     Toast.makeText(requireActivity(), s, Toast.LENGTH_SHORT).show();

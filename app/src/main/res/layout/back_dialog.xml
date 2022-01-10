@@ -69,7 +69,7 @@
             android:layout_weight="1"
             android:background="@color/pinkbg"
             android:gravity="center_vertical"
-            android:text="Ya !"
+            android:text="Ya!"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20sp" />

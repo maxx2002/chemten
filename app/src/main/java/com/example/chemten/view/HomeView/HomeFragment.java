@@ -162,7 +162,7 @@ public class HomeFragment extends Fragment {
             listDataUser = dataUser.getUser();
             homeAdapter = new HomeAdapter(getActivity());
             homeAdapter.setUserID(listDataUser.get(0).getId());
-            welcome_name.setText("Hi, "+listDataUser.get(0).getName());
+            welcome_name.setText("Halo, "+listDataUser.get(0).getName());
             background.setVisibility(View.GONE);
             logo.setVisibility(View.GONE);
         }
